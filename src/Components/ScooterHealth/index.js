@@ -29,16 +29,16 @@ const ScooterHealth = () => {
 
   ]
   return (
-    <Layout>
-    <div className='w-[30%] bg-white px-6 py-4 rounded-lg'>
+ 
+    <div className='w-[95%] bg-white px-6 py-4 rounded-lg'>
         <div className='flex flex-row justify-between'>
-        <span className='text-2xl'>Scooter Health</span>
+        <h1 className='text-xl font-semibold'>Scooter Health</h1>
         <div className='w-[30%]'>
         <DatePicker  picker="year" />
         </div>
         </div>
-        <div className='items-center justify-center flex '>
-        <img src={Scooter}/>
+        <div className='items-center justify-center flex h-[200px]'>
+        <img className='w-[100%] h-[100%]' src={Scooter}/>
         </div>
       
        
@@ -62,7 +62,7 @@ const ScooterHealth = () => {
       
         
     </div>
-    </Layout>
+  
   )
 }
 
