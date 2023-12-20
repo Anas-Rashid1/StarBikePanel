@@ -4,10 +4,7 @@ import img1 from "../../Assets/boxImages/Shape.png";
 
 import SideBar from "../../Components/SideBar";
 
-
-
-
-import Sidebar from "../../Components/sidebar2";
+import Sidebar2 from "../../Components/sidebar2";
 
 import PanelBox from "../../Components/panelBox";
 import MapComponent from "../../Components/Mapbox";
@@ -18,43 +15,28 @@ import ScooterHealth from "../../Components/ScooterHealth";
 import RecentJobs from "../../Components/RecentJobs";
 import Search from "../../Components/Search";
 
-
 const AdminHome = () => {
-  return (<>
-  
-
- 
-    <Layout>
+  return (
+    <>
+      <Layout>
         <div>
+          <SideBar />
           <Search />
         </div>
-      <div className="w-[100%] flex flex-col md:flex-row bg-white ">
+        <div className="w-[100%] flex flex-col md:flex-row bg-white ">
+          <div className="flex flex-col  w-full  sm:w-[70%] ">
+            <PanelBox />
 
-        <div className="flex flex-col  w-full  sm:w-[70%] ">
-          <PanelBox />
-
-          <MapComponent />
-          <CostAnalysisGraph />
+            <MapComponent />
+            <CostAnalysisGraph />
+          </div>
+          <div className="flex flex-col gap-12">
+            <ScooterHealth />
+            <RecentJobs />
+          </div>
         </div>
-        <div className="flex flex-col gap-12">
-          <ScooterHealth />
-          <RecentJobs />
-        </div>
-      </div>
-
-
-
-
-
-    </Layout>
-
-    
-
-
-  </>
-
-
-
+      </Layout>
+    </>
   );
 };
 
