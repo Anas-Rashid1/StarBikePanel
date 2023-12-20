@@ -17,16 +17,17 @@ const MapComponent = () => {
 
   return (
 
-    <div className='flex justify-center items-center flex-col'>
+    <div className='flex justify-center items-center flex-col w-full px-4'>
 
-    <div className=" h-[300px] w-full md:w-3/4 lg:w-1/2 xl:w-1/2 m-2 ">
+    <div className=" h-[300px] w-full md:w-full lg:w-full xl:w-full m-2 ">
         <SearchBar/>
       
       
-      <MapContainer center={position} zoom={13} scrollWheelZoom={false} className="h-full w-full">
-        <TileLayer
+      <MapContainer center={position} zoom={13} scrollWheelZoom={false} className="h-full w-full ">
+      <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          className='w-full'
         />
         <Marker position={position}>
           <Popup>

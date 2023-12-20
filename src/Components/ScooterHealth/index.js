@@ -30,7 +30,7 @@ const ScooterHealth = () => {
   ]
   return (
  
-    <div className='w-[95%] bg-white px-6 py-4 rounded-lg'>
+    <div className='w-[95%] bg-white px-6 py-4 rounded-lg ml-2'>
         <div className='flex flex-row justify-between'>
         <h1 className='text-xl font-semibold'>Scooter Health</h1>
         <div className='w-[30%]'>
