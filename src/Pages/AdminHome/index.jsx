@@ -25,21 +25,23 @@ const AdminHome = () => {
 
  
     <Layout>
-        <div>
+      <div className="relative h-screen overflow-x-hidden">
+       
           <Search />
-        </div>
+     
       <div className="w-[100%] flex flex-col md:flex-row bg-white ">
 
-        <div className="flex flex-col  w-full  sm:w-[70%] ">
+        <div className="flex flex-col  w-full  lg:w-[65%] xl:w-[70%]  sm:w-[70%]  ">
           <PanelBox />
 
           <MapComponent />
           <CostAnalysisGraph />
         </div>
-        <div className="flex flex-col gap-12">
+        <div className="flex flex-col gap-12 mt-4">
           <ScooterHealth />
           <RecentJobs />
         </div>
+      </div>
       </div>
 
 

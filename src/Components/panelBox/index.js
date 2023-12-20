@@ -16,10 +16,10 @@ const PanelBox = () => {
   return (
     <div className="flex flex-wrap">
       {data.map((item, index) => (
-        <div key={index} className="border border-gray-200 p-2 h-[140px] w-40 m-2">
-          <div className="mb-1 "> <p>{item.heading}</p></div>
+        <div key={index} className="border border-gray-200 p-2 lg:h-[150px] xl:h-[150px] xl:w-40 lg:w-32 m-2 w-32">
+          <div className="mb-1 xl:text-lg lg:text-md "> <p>{item.heading}</p></div>
           <div className="flex justify-between items-center mb-1">
-            <div className='text-2xl'><b> {item.count}</b></div>
+            <div className='xl:text-2xl lg:text-xl'><b> {item.count}</b></div>
             <img src={item.imageSrc} alt="Dynamic Image" className="w-12 h-12" />
           </div>
           <div>{item.text}</div>

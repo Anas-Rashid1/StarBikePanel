@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -71,6 +71,17 @@ const CostAnalysisGraph = () => {
   const handleMonthChange = (e) => {
     setSelectedMonth(e.target.value);
   };
+  const reloadOnResize = () => {
+    window.location.reload();
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', reloadOnResize);
+
+    return () => {
+      window.removeEventListener('resize', reloadOnResize);
+    };
+  }, []);
 
   return (
 
