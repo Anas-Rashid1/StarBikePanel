@@ -78,7 +78,7 @@ const SideBar = () => {
   const [selectedItem, setSelectedItem] = useState(1);
 
   return (
-    <div className="xl:w-2/12 lg:w-1/12 sm:w-4/12 bg-white h-auto">
+    <div className="xl:w-2/12 lg:w-3/12 sm:w-4/12  bg-white h-auto">
       <div className="bg-white flex justify-center items-center pb-3">
         <Image src={logo} width={67} preview={false} />
       </div>
