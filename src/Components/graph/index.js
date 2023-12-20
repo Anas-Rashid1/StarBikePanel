@@ -76,11 +76,12 @@ const CostAnalysisGraph = () => {
 
     <div className="flex flex-col   justify-center   p-4  mt-12">
     <div className='flex w-full justify-between flex-col sm:flex-row'>
-    <h2 className="text-xl font-bold mb-4 ">Cost Analysis</h2>
+    <h2 className="text-xl font-bold mb-4  flex justify-center ">Cost Analysis</h2>
       <select
         className="form-select appearance-none
           block
-          w-[20%]
+          w-full
+          sm:w-[35%]
           px-3
           py-1.5
           text-base
