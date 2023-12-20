@@ -13,7 +13,7 @@ const RecentJobs = () => {
         },
     ]
   return (
-    <div className=' w-[95%] bg-white p-4 rounded-lg'>
+    <div className=' w-[95%] bg-white p-4 rounded-lg ml-2'>
         <h1 className='text-xl font-semibold'>Recent Due Jobs</h1>
         <div>
             {DueJobsData.map((item , index)=>(

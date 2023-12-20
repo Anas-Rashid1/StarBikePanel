@@ -19,20 +19,20 @@ const AdminHome = () => {
   return (
     <>
       <Layout>
-        <div>
-          <SideBar />
+        <div className="relative h-screen overflow-x-hidden">
           <Search />
-        </div>
-        <div className="w-[100%] flex flex-col md:flex-row bg-white ">
-          <div className="flex flex-col  w-full  sm:w-[70%] ">
-            <PanelBox />
 
-            <MapComponent />
-            <CostAnalysisGraph />
-          </div>
-          <div className="flex flex-col gap-12">
-            <ScooterHealth />
-            <RecentJobs />
+          <div className="w-[100%] flex flex-col md:flex-row bg-gray-100 ">
+            <div className="flex flex-col  w-full  lg:w-[65%] xl:w-[70%]  sm:w-[70%]  ">
+              <PanelBox />
+
+              <MapComponent />
+              <CostAnalysisGraph />
+            </div>
+            <div className="flex flex-col gap-12 mt-4">
+              <ScooterHealth />
+              <RecentJobs />
+            </div>
           </div>
         </div>
       </Layout>
