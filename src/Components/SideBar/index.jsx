@@ -1,6 +1,6 @@
 
 
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import { Col, Image } from "antd";
 import logo from "../../Assets/Logo/Logo.png";
 import greyIcon_dashboard from "../../Assets/SideBarIcons/DashBoard.png";
@@ -79,6 +79,29 @@ const Account = [
 const SideBar = () => {
   const [selectedItem, setSelectedItem] = useState(1);
   const [open, setOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 500);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 500);
+    };
+
+   
+    window.addEventListener("resize", handleResize);
+
+   
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const handleArrowButtonClick = () => {
+  
+    if (!isMobile) {
+      setOpen(!open);
+    }
+  };
+
 
   return (
     <div className={`${open ? "w-60" : "w-20"}   bg-white h-auto duration-300 relative`}>
@@ -88,11 +111,11 @@ const SideBar = () => {
       <div className="bg-white flex flex-col justify-center items-center gap-2">
 
         <Image src={logo} width={67} preview={false} />
-        <BsArrowLeftShort className={`bg-ordinary text-sidebarheadinghoveringcolor text-3xl rounded-full   z-50 top-9 border border-sidebarheadinghoveringcolor cursor-pointer ${!open && "rotate-180"}`} onClick={() => setOpen(!open)}/>
+        <BsArrowLeftShort className={`bg-ordinary text-sidebarheadinghoveringcolor text-3xl rounded-full   z-50 top-9 border border-sidebarheadinghoveringcolor cursor-pointer ${!open && "rotate-180"}  ${isMobile && "hidden" }` } onClick={handleArrowButtonClick}/>
       </div>
     
 
-      <p className={`text-sidebarheadingcolor font-medium text-2xl pl-4 ${!open && "scale-0"}`}>
+      <p className={`text-sidebarheadingcolor font-medium text-2xl pl-4 mb-[2px] ${!open && "scale-0"}`}>
         General{" "}
       </p>
       {General.map((item) => {
@@ -100,7 +123,7 @@ const SideBar = () => {
           <div>
             <div
               id={item?.id}
-              className=" text-sidebarheadingcolor pt-2  hover:text-sidebarheadinghoveringcolor cursor-pointer transition duration-1000 ease-linear" 
+              className=" text-sidebarheadingcolor pt-2  hover:text-sidebarheadinghoveringcolor cursor-pointer" 
               onClick={() => {
                 setSelectedItem(item?.id);
               }}
@@ -112,16 +135,17 @@ const SideBar = () => {
               </div>
 
               {item?.id === selectedItem ? (
-                <div className=" flex-1 inline-block ml-10">
-                  <Image src={item?.ColorIcon} width={20} preview={false} className="block float-left" />
-                  <p className={` ml-10    text-sidebarheadinghoveringcolor duration-200 ${!open && "hidden"}`} >
+                <div className=" flex flex-row mb-4 ml-10">
+                  <div className="">
+                  <Image src={item?.ColorIcon} width={20} preview={false} className="" /></div>
+                  <p className={` ml-10  text-sidebarheadinghoveringcolor  ${!open && "hidden"}`} >
                     {item.Name}
                   </p>
                 </div>
               ) : (
-                <div className=" flex-1 flex-row inline-block ml-10 ">
-                  <Image src={item?.GreyIcon} width={20} preview={false} className="block float-left"  />
-                  <p className={ `ml-10 -translate-y-8  text-sidebarheadingcolor ${!open && "hidden"}`  }>
+                <div className=" flex flex-row mb-4  ml-10 ">
+                  <Image src={item?.GreyIcon} width={20} preview={false} className=" "  />
+                  <p className={ `ml-10  text-sidebarheadingcolor ${!open && "hidden"}`  }>
                     {item.Name}
                   </p>
                 </div>
@@ -152,15 +176,15 @@ const SideBar = () => {
               </div>
 
               {item?.id === selectedItem ? (
-                <div className=" flex-1 inline-block ml-10">
-                  <Image src={item?.ColorIcon} width={20} preview={false} className="block float-left" />
-                  <p className={ `ml-10 -translate-y-8   text-sidebarheadinghoveringcolor  ${!open && "hidden"}`  }>
+                <div className=" flex  ml-10">
+                  <Image src={item?.ColorIcon} width={20} preview={false} className="" />
+                  <p className={ `ml-10   text-sidebarheadinghoveringcolor  ${!open && "hidden"}`  }>
                     {item.Name}
                   </p>
                 </div>
               ) : (
-                <div className=" flex-1 flex-row inline-block ml-10 ">
-                  <Image src={item?.GreyIcon} width={20} preview={false} className="block float-left" />
+                <div className=" flex flex-row  ml-10 ">
+                  <Image src={item?.GreyIcon} width={20} preview={false} className="" />
                   <p className={` ml-10   text-sidebarheadingcolor ${!open && "hidden"}` }>
                     {item.Name}
                   </p>

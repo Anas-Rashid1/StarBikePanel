@@ -31,7 +31,7 @@ const AdminHome = () => {
      
       <div className="w-[100%] flex flex-col md:flex-row bg-white ">
 
-        <div className="flex flex-col  w-full  lg:w-[65%] xl:w-[70%]  sm:w-[70%]  ">
+        <div className="flex flex-col  w-full md:w-[55%]  lg:w-[65%] xl:w-[70%]  sm:w-[70%]  ">
           <PanelBox />
 
           <MapComponent />
