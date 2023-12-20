@@ -11,7 +11,7 @@ const SearchBar = () => {
         placeholder="Search..."
       />
     </div>
-    <button style={{backgroundColor:"#FFA43D"}} className="ml-4  hover:bg-[#FFA43D] text-white font-bold py-2 px-4 rounded">
+    <button style={{backgroundColor:"#FFA43D"}} className="ml-4    hover:bg-[#FFA43D] text-white font-bold py-2 px-4 rounded">
       + New Job
     </button>
   </div></div>
