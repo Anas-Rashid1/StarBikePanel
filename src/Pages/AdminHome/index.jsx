@@ -18,8 +18,12 @@ import ScooterHealth from "../../Components/ScooterHealth";
 import RecentJobs from "../../Components/RecentJobs";
 import Search from "../../Components/Search";
 
+
 const AdminHome = () => {
   return (<>
+  
+
+ 
     <Layout>
         <div>
           <Search />
@@ -44,7 +48,7 @@ const AdminHome = () => {
 
     </Layout>
 
-
+    
 
 
   </>
