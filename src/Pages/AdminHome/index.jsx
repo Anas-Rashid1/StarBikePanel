@@ -24,7 +24,7 @@ const AdminHome = () => {
         <div>
           <Search />
         </div>
-      <div className="w-[100%] flex flex-col md:flex-row bg-gray-100 ">
+      <div className="w-[100%] flex flex-col md:flex-row bg-white ">
 
         <div className="flex flex-col  w-full  sm:w-[70%] ">
           <PanelBox />
