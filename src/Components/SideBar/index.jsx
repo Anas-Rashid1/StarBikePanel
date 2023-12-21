@@ -75,15 +75,15 @@ const Account = [
 
 const SideBar = () => {
   const [selectedItem, setSelectedItem] = useState(1);
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   return (
     <div
       className={`${
         open ? "w-60" : "w-20"
-      }   bg-white h-auto duration-300 relative`}
+      }    max-h-screen duration-300 relative`}
     >
-      <div className="bg-white flex flex-col justify-center items-center gap-2">
+      <div className=" flex flex-col justify-center items-center gap-2">
         <Image src={logo} width={67} preview={false} />
         <BsArrowLeftShort
           className={`bg-ordinary text-sidebarheadinghoveringcolor text-3xl rounded-full   z-50 top-9 border border-sidebarheadinghoveringcolor cursor-pointer ${
@@ -125,7 +125,7 @@ const SideBar = () => {
                     className="block float-left"
                   />
                   <p
-                    className={` ml-10    text-sidebarheadinghoveringcolor duration-200 ${
+                    className={` ml-10 -translate-y-8   text-sidebarheadinghoveringcolor duration-200 ${
                       !open && "hidden"
                     }`}
                   >
@@ -164,10 +164,10 @@ const SideBar = () => {
 
       {Account.map((item) => {
         return (
-          <div>
+          <div className="  ">
             <div
               id={item?.id}
-              className=" text-sidebarheadingcolor pt-2  hover:text-sidebarheadinghoveringcolor cursor-pointer"
+              className=" text-sidebarheadingcolor pt-1  hover:text-sidebarheadinghoveringcolor cursor-pointer"
               onClick={() => {
                 setSelectedItem(item?.id);
               }}
@@ -179,7 +179,7 @@ const SideBar = () => {
               </div>
 
               {item?.id === selectedItem ? (
-                <div className=" flex-1 inline-block ml-10">
+                <div className=" flex-1 inline-block ml-10 ">
                   <Image
                     src={item?.ColorIcon}
                     width={20}
@@ -187,7 +187,7 @@ const SideBar = () => {
                     className="block float-left"
                   />
                   <p
-                    className={`ml-10 -translate-y-8   text-sidebarheadinghoveringcolor  ${
+                    className={`ml-10 -translate-y-8 text-sidebarheadinghoveringcolor  ${
                       !open && "hidden"
                     }`}
                   >
@@ -203,7 +203,7 @@ const SideBar = () => {
                     className="block float-left"
                   />
                   <p
-                    className={` ml-10 -translate-y-8  text-sidebarheadingcolor ${
+                    className={` ml-10  -translate-y-8 text-sidebarheadingcolor ${
                       !open && "hidden"
                     }`}
                   >
