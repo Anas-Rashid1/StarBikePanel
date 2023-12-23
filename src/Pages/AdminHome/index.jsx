@@ -4,9 +4,6 @@ import img1 from "../../Assets/boxImages/Shape.png";
 
 import SideBar from "../../Components/SideBar";
 
-
-
-
 import Sidebar from "../../Components/sidebar2";
 
 import PanelBox from "../../Components/panelBox";
@@ -18,45 +15,28 @@ import ScooterHealth from "../../Components/ScooterHealth";
 import RecentJobs from "../../Components/RecentJobs";
 import Search from "../../Components/Search";
 
-
 const AdminHome = () => {
-  return (<>
-  
-
- 
-    <Layout>
-      <div className="relative h-screen overflow-x-hidden">
-       
+  return (
+    <>
+      <Layout>
+        <div className="relative h-screen overflow-x-hidden">
           <Search />
-     
-      <div className="w-[100%] flex flex-col md:flex-row bg-white ">
 
-        <div className="flex flex-col  w-full md:w-[55%]  lg:w-[65%] xl:w-[70%]  sm:w-[70%]  ">
-          <PanelBox />
+          <div className="w-[100%] flex flex-col md:flex-row bg-white ">
+            <div className="flex flex-col  w-full md:w-[55%]  lg:w-[65%] xl:w-[70%]  sm:w-[70%]  ">
+              <PanelBox />
 
-          <MapComponent />
-          <CostAnalysisGraph />
+              <MapComponent />
+              <CostAnalysisGraph />
+            </div>
+            <div className="flex flex-col gap-12 mt-4">
+              <ScooterHealth />
+              <RecentJobs />
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-12 mt-4">
-          <ScooterHealth />
-          <RecentJobs />
-        </div>
-      </div>
-      </div>
-
-
-
-
-
-    </Layout>
-
-    
-
-
-  </>
-
-
-
+      </Layout>
+    </>
   );
 };
 
