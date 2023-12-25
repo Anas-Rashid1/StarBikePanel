@@ -1,7 +1,6 @@
-
-
 import React, { useState , useEffect } from "react";
 import { Col, Image } from "antd";
+import { Link } from "react-router-dom";
 import logo from "../../Assets/Logo/Logo.png";
 import greyIcon_dashboard from "../../Assets/SideBarIcons/DashBoard.png";
 import greyIcon_feedback from "../../Assets/SideBarIcons/FeedBack.png";
@@ -24,6 +23,8 @@ import colorIcon_users from "../../Assets/SideBarColorfulIcons/Users.png";
 import colorIcon_settings from "../../Assets/SideBarColorfulIcons/Settings.png";
 
 
+
+
 import { BsArrowLeftShort } from "react-icons/bs";
 const General = [
   {
@@ -31,14 +32,16 @@ const General = [
     Name: "Dashboard",
     GreyIcon: greyIcon_dashboard,
     ColorIcon: colorIcon_dashboard,
+    path:"/",
   },
   {
     id: 2,
     Name: "Scooter",
     GreyIcon: greyIcon_scooter,
     ColorIcon: colorIcon_scooter,
+    path:"/scooter",
   },
-  { id: 3, Name: "User", GreyIcon: greyIcon_users, ColorIcon: colorIcon_users },
+  { id: 3, Name: "User", GreyIcon: greyIcon_users, ColorIcon: colorIcon_users , path:"/user" },
   {
     id: 4,
     Name: "Location",
@@ -62,6 +65,7 @@ const General = [
     Name: "Feedback",
     GreyIcon: greyIcon_feedback,
     ColorIcon: colorIcon_feedback,
+    path:"/settings"
   },
 ];
 
@@ -73,6 +77,7 @@ const Account = [
     Name: "Setting",
     GreyIcon: greyIcon_settings,
     ColorIcon: colorIcon_settings,
+   
   },
 ];
 
@@ -104,7 +109,7 @@ const SideBar = () => {
 
 
   return (
-    <div className={`${open ? "w-60" : "w-20"}   bg-white h-auto duration-300 relative`}>
+    <div className={`${open ? "w-56" : "w-20"}   bg-white h-auto duration-300 relative`}>
         
     
      
@@ -120,6 +125,7 @@ const SideBar = () => {
       </p>
       {General.map((item) => {
         return (
+          <Link to={item.path}>
           <div>
             <div
               id={item?.id}
@@ -138,20 +144,21 @@ const SideBar = () => {
                 <div className=" flex flex-row mb-4 ml-10">
                   <div className="">
                   <Image src={item?.ColorIcon} width={20} preview={false} className="" /></div>
-                  <p className={` ml-10  text-sidebarheadinghoveringcolor  ${!open && "hidden"}`} >
+                  <p className={` ml-6  text-sidebarheadinghoveringcolor  ${!open && "hidden"}`} >
                     {item.Name}
                   </p>
                 </div>
               ) : (
                 <div className=" flex flex-row mb-4  ml-10 ">
                   <Image src={item?.GreyIcon} width={20} preview={false} className=" "  />
-                  <p className={ `ml-10  text-sidebarheadingcolor ${!open && "hidden"}`  }>
+                  <p className={ `ml-6  text-sidebarheadingcolor ${!open && "hidden"}`  }>
                     {item.Name}
                   </p>
                 </div>
               )}
             </div>
           </div>
+          </Link>
         );
       })}
 
@@ -178,14 +185,14 @@ const SideBar = () => {
               {item?.id === selectedItem ? (
                 <div className=" flex  ml-10">
                   <Image src={item?.ColorIcon} width={20} preview={false} className="" />
-                  <p className={ `ml-10   text-sidebarheadinghoveringcolor  ${!open && "hidden"}`  }>
+                  <p className={ `ml-6   text-sidebarheadinghoveringcolor  ${!open && "hidden"}`  }>
                     {item.Name}
                   </p>
                 </div>
               ) : (
                 <div className=" flex flex-row  ml-10 ">
                   <Image src={item?.GreyIcon} width={20} preview={false} className="" />
-                  <p className={` ml-10   text-sidebarheadingcolor ${!open && "hidden"}` }>
+                  <p className={` ml-6   text-sidebarheadingcolor ${!open && "hidden"}` }>
                     {item.Name}
                   </p>
                 </div>

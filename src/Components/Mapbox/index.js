@@ -17,7 +17,7 @@ const MapComponent = () => {
 
   return (
 
-    <div className='flex justify-center items-center flex-col w-full px-4'>
+    <div className='flex justify-center items-center flex-col w-full px-4 mb-4'>
 
     <div className=" h-[300px] w-full md:w-full lg:w-full xl:w-full m-2 ">
         <SearchBar/>

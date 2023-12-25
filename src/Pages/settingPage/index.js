@@ -1,8 +1,9 @@
 import React from 'react'
+import AdminLogin from '../Login'
 
 const SettingPage = () => {
   return (
-    <div>setting page</div>
+   <AdminLogin/>
   )
 }
 
