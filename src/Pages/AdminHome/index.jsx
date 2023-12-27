@@ -20,7 +20,7 @@ const AdminHome = () => {
   return (
     <>
     <AdminLogin/>
-      {/* <Layout>
+      <Layout>
         <div className="relative h-screen overflow-x-hidden bg-gray-100">
           <Search />
 
@@ -37,7 +37,7 @@ const AdminHome = () => {
             </div>
           </div>
         </div>
-      </Layout> */}
+      </Layout>
     </>
   );
 };

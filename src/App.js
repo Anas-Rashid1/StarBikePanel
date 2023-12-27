@@ -10,11 +10,14 @@ import ReportPage from "./Pages/ReportPage";
 import ScooterPage from "./Pages/ScooterPage";
 import SettingPage from "./Pages/settingPage";
 import UserPage from "./Pages/userPage";
+import Layout from "./Components/Layout";
 
 function App() {
   return (
     <BrowserRouter>
+      <Layout>
       <Routes>
+
         <Route path="/" element={<AdminHome />} />
         <Route path="/feedback" element={<FeedbackPage />} />
         <Route path="/help" element={<HelpPage />} />
@@ -25,6 +28,7 @@ function App() {
         <Route path="/settings" element={<SettingPage />} />
         <Route path="/user" element={<UserPage />} />
       </Routes>
+      </Layout>
 
     </BrowserRouter>
   )
