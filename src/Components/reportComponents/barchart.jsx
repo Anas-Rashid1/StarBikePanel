@@ -21,7 +21,7 @@ const data = [
     { date: '12 Feb', income: 2000, expenses: 9800 },
     { date: '13 Feb', income: 2780, expenses: 3908 },
     { date: '14 Feb', income: 1890, expenses: 4800 },
-    // ... more data points
+   
   ];
 
 const CustomBarChart = () => {
@@ -62,7 +62,7 @@ const CustomBarChart = () => {
         <div className="w-full h-[150px] mb-1 lg:mb-2  border border-gray-400 p-1 flex flex-col sm:mr-1 lg:mr-0">
           
           <div>
-            <p className='text-gray-600	'>New Users</p>
+            <p className='text-gray-600	'>Income</p>
             <p className='font-semibold'>7.2%</p>
           </div>
           <img src={img4} alt="" className="w-[100%] h-[90%] object-cover mr-3 overflow-hidden" />
@@ -70,7 +70,7 @@ const CustomBarChart = () => {
         <div className="w-full h-[150px] mb-1 lg:mb-2  border border-gray-400 p-1 flex flex-col sm:mr-1 lg:mr-0">
           
           <div>
-            <p className='text-gray-600	'>New Users</p>
+            <p className='text-gray-600	'>Expenses</p>
             <p className='font-semibold'>7.2%</p>
           </div>
           <img src={img5} alt="" className="w-[100%] h-[90%] object-cover mr-3 overflow-hidden" />

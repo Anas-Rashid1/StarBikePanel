@@ -18,7 +18,7 @@ import CustomBarChart from '../../Components/reportComponents/barchart';
 import Search from '../../Components/Search'
 
 
-// Mock data
+
 const data = [
   { time: '10am', newUsers: 30, invoicesOverdue: 20, users: 80 },
   { time: '11am', newUsers: 45, invoicesOverdue: 25, users: 90 },

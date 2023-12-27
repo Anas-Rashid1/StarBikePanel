@@ -19,9 +19,9 @@ import AdminLogin from "../Login";
 const AdminHome = () => {
   return (
     <>
-    <AdminLogin/>
+    {/* <AdminLogin/> */}
       
-        <div className="relative h-screen overflow-x-hidden bg-white">
+        <div className="relative h-screen overflow-x-hidden bg-gray-100">
           <Search />
 
           <div className="w-[100%] flex flex-col md:flex-row xl:gap-12  ">
@@ -30,7 +30,7 @@ const AdminHome = () => {
               <div className='flex justify-center items-center flex-col w-full px-4 mb-4'>
                 <div className=" w-full md:w-full lg:w-full xl:w-full m-2">
                 <SearchBar/>
-
+                
                 </div>
                 
               <MapComponent  className={" h-[300px] w-full md:w-full lg:w-full xl:w-full m-2 "}/>
