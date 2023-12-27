@@ -29,8 +29,8 @@ const CustomBarChart = () => {
   return (
 <>
 
-    <div className="sm:flex-row flex justify-between p-2 w-full  border-black border-b-[2px] min-[200px]:flex-col ">
-    <h1 className="text-2xl font-semibold ">Platform</h1>
+    <div className="sm:flex-row flex justify-between p-2 w-full  border-gray-400 border-b-[2px] min-[200px]:flex-col ">
+    <h1 className="text-2xl font-semibold ">Total Content</h1>
     <div className="flex items-center">
       
       <DatePicker
@@ -44,7 +44,7 @@ const CustomBarChart = () => {
 
 
     <div className="p-2 sm:flex-col flex lg:flex-row justify-between min-[200px]:flex-col">
-      <ResponsiveContainer className="sm:w-full lg:w-[80%]" height={300}>
+      <ResponsiveContainer className="sm:w-full lg:w-[80%]" height={400}>
       <BarChart data={data}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="date" />
@@ -65,7 +65,7 @@ const CustomBarChart = () => {
             <p className='text-gray-600	'>New Users</p>
             <p className='font-semibold'>7.2%</p>
           </div>
-          <img src={img4} alt="" className="w-[200px] h-[90%] object-cover mr-3" />
+          <img src={img4} alt="" className="w-[100%] h-[90%] object-cover mr-3 overflow-hidden" />
         </div>
         <div className="w-full h-[150px] mb-1 lg:mb-2  border border-gray-400 p-1 flex flex-col sm:mr-1 lg:mr-0">
           
@@ -73,7 +73,7 @@ const CustomBarChart = () => {
             <p className='text-gray-600	'>New Users</p>
             <p className='font-semibold'>7.2%</p>
           </div>
-          <img src={img5} alt="" className="w-[200px] h-[90%] object-cover mr-3" />
+          <img src={img5} alt="" className="w-[100%] h-[90%] object-cover mr-3 overflow-hidden" />
         </div>
        
 

@@ -15,6 +15,7 @@ import {
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import CustomBarChart from '../../Components/reportComponents/barchart';
+import Search from '../../Components/Search'
 
 
 // Mock data
@@ -32,7 +33,10 @@ const CustomLineChart = () => {
   const [startDate, setStartDate] = useState(new Date());
 
   return (<>
-  <div className="sm:flex-row flex justify-between p-2 w-full  border-black border-b-[2px] min-[200px]:flex-col ">
+    <div className="relative  overflow-x-hidden bg-white">
+      <Search/>
+      </div>
+  <div className="sm:flex-row flex justify-between p-2 w-full  border-gray-400 border-b-[2px] min-[200px]:flex-col ">
     <h1 className="text-2xl font-semibold ">Platform</h1>
     <div className="flex items-center">
       
