@@ -47,12 +47,14 @@ const General = [
     Name: "Location",
     GreyIcon: greyIcon_location,
     ColorIcon: colorIcon_location,
+    path:"/location",
   },
   {
     id: 5,
     Name: "Reports",
     GreyIcon: greyIcon_reports,
     ColorIcon: colorIcon_reports,
+    path:"/report",
   },
   {
     id: 6,
