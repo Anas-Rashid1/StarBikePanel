@@ -60,13 +60,7 @@ const General = [
     GreyIcon: greyIcon_history,
     ColorIcon: colorIcon_history,
   },
-  {
-    id: 7,
-    Name: "Feedback",
-    GreyIcon: greyIcon_feedback,
-    ColorIcon: colorIcon_feedback,
-    path:"/settings"
-  },
+  
 ];
 
 const Account = [
@@ -86,7 +80,20 @@ const SideBar = () => {
   const [open, setOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 500);
 
+  const reloadOnResize = () => {
+    window.location.reload();
+  };
+
   useEffect(() => {
+    window.addEventListener("resize", reloadOnResize);
+
+    return () => {
+      window.removeEventListener("resize", reloadOnResize);
+    };
+  }, []);
+
+  useEffect(() => {
+
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 500);
     };
@@ -109,7 +116,7 @@ const SideBar = () => {
 
 
   return (
-    <div className={`${open ? "w-56" : "w-20"}   bg-white h-auto duration-300 relative`}>
+    <div className={`${open ? "w-56" : "w-20"}   bg-white h-auto duration-300 sticky overflow-y-auto `}>
         
     
      
@@ -120,7 +127,7 @@ const SideBar = () => {
       </div>
     
 
-      <p className={`text-sidebarheadingcolor font-medium text-2xl pl-4 mb-[2px] ${!open && "scale-0"}`}>
+      <p className={`text-sidebarheadingcolor font-medium text-2xl pl-4 mb-[1px] ${!open && "scale-0"}`}>
         General{" "}
       </p>
       {General.map((item) => {
@@ -141,7 +148,7 @@ const SideBar = () => {
               </div>
 
               {item?.id === selectedItem ? (
-                <div className=" flex flex-row mb-4 ml-10">
+                <div className=" flex flex-row mb-2 ml-10">
                   <div className="">
                   <Image src={item?.ColorIcon} width={20} preview={false} className="" /></div>
                   <p className={` ml-6  text-sidebarheadinghoveringcolor  ${!open && "hidden"}`} >
@@ -149,7 +156,7 @@ const SideBar = () => {
                   </p>
                 </div>
               ) : (
-                <div className=" flex flex-row mb-4  ml-10 ">
+                <div className=" flex flex-row mb-2  ml-10 ">
                   <Image src={item?.GreyIcon} width={20} preview={false} className=" "  />
                   <p className={ `ml-6  text-sidebarheadingcolor ${!open && "hidden"}`  }>
                     {item.Name}

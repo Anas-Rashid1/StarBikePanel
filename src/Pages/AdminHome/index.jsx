@@ -19,9 +19,9 @@ import AdminLogin from "../Login";
 const AdminHome = () => {
   return (
     <>
-    <AdminLogin/>
-      {/* <Layout>
-        <div className="relative h-screen overflow-x-hidden bg-gray-100">
+   
+  <Layout>
+        <div className=" h-screen overflow-x-hidden bg-gray-100 relative">
           <Search />
 
           <div className="w-[100%] flex flex-col md:flex-row xl:gap-12  ">
@@ -37,7 +37,8 @@ const AdminHome = () => {
             </div>
           </div>
         </div>
-      </Layout> */}
+        </Layout>
+      
     </>
   );
 };

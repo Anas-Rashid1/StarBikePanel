@@ -45,11 +45,15 @@ const ScooterPage = () => {
   ];
   return (
     <Layout>
-      <div className="relative h-screen overflow-x-hidden bg-gray-100">
+ 
+      <div className="relative h-screen overflow-x-hidden w-full bg-gray-100 px-2 md:px-6">
         <Search />
-        <div className="relative block bg-white px-2 pt-4 justify-center items-center   mt-10 sm:mx-4 md:mx-6 mx-4  h-full">
-              <div class="relative overflow-x-auto   shadow-md sm:rounded-lg">
-                <table class="text-md text-left  text-gray-500 dark:text-gray-400 m-auto lg:w-full md:w-[40%] h-full">
+     
+        
+        <div className=" bg-white px-2 pt-4 justify-center items-center mt-10 w-full  h-auto">
+        <div class="relative overflow-x-auto  justify-center items-center  px-4  sm:rounded-lg">
+              
+                <table class="text-md  text-left  text-gray-500 dark:text-gray-400 m-auto   lg:w-full md:w-[40%] h-full">
                   <thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                       <th scope="col" class="lg:px-6 md:px-4 px-4 py-3">
@@ -96,10 +100,13 @@ const ScooterPage = () => {
                   </tbody>
                 </table>
               </div>
-            </div>
+              </div>
+          
+          
         
       </div>
-    </Layout>
+      </Layout>
+  
   );
 };
 

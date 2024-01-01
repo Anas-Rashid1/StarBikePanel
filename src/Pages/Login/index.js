@@ -17,8 +17,8 @@ const AdminLogin = () => {
       }}
     >
       <div className="lg:w-[50%] md:w-[65%] w-[100%] h-full flex flex-row  items-center justify-center">
-        <div className="bg-white md:h-[75%] h-[90%] xl:w-[65%] lg:w-[80%] md:w-[80%] w-[80%] rounded-tr-[20px] rounded-bl-[20px] flex flex-col gap-12 items-center justify-center sm:p-12 p-4 shadow-lg shadow-slate-700">
-          <h1 className="sm:text-2xl text-xl font-bold font-serif text-center">
+        <div className="bg-white  xl:w-[65%] lg:w-[80%] md:w-[80%] w-[80%] rounded-tr-[20px] rounded-bl-[20px] flex flex-col gap-12 items-center justify-center sm:p-12 p-4 shadow-lg shadow-slate-700">
+          <h1 className="sm:text-2xl text-xl mt-12 font-bold font-serif text-center">
             Welcome to StarBike Admin Dashboard
           </h1>
           <div className="flex flex-col gap-8 w-full">
@@ -41,7 +41,7 @@ const AdminLogin = () => {
               className=" py-2 px-4 bg-gray-300 text-gray-700 shadow-md shadow-slate-700 w-full rounded-[20px]"
             />
           </div>
-          <button className="w-[70%] bg-sidebarheadinghoveringcolor text-black rounded-[20px] px-4 py-2">
+          <button className="w-[70%] bg-sidebarheadinghoveringcolor text-black rounded-[20px] px-4 py-2 mb-12">
             Sign In
           </button>
         </div>

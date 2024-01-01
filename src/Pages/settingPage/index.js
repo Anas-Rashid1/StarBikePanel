@@ -3,7 +3,7 @@ import AdminLogin from '../Login'
 
 const SettingPage = () => {
   return (
-   <AdminLogin/>
+ <></>
   )
 }
 
