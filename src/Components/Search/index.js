@@ -6,7 +6,7 @@ const Search = () => {
        
     <div className="flex-1">
       <input
-        className="w-full px-4 py-2 rounded-md shadow-sm focus:outline-none  focus:border-[#FFA43D]-300"
+        className="w-full px-4 py-2 rounded-md shadow-sm focus:outline-none  focus:border-[#FFA43D]-300 border border-gray-200"
         type="text"
         placeholder="Search..."
       />

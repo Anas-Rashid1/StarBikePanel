@@ -17,9 +17,7 @@ function App() {
   return (
     
     <BrowserRouter>
-    
       <Routes>
-    
         <Route path="/" element={<AdminHome />} />
         <Route path="/feedback" element={<FeedbackPage />} />
         <Route path="/help" element={<HelpPage />} />
@@ -32,7 +30,6 @@ function App() {
         <Route path="/login" element={<AdminLogin/>}/>
        
       </Routes>
-    
 
     </BrowserRouter>
   
