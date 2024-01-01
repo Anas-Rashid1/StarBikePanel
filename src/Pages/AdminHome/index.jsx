@@ -19,11 +19,11 @@ const AdminHome = () => {
   return (
     <>
       <Layout>
-        <div className="relative h-screen overflow-x-hidden sm:pr-4 xsm:pr-4">
+        <div className="relative h-screen overflow-x-hidden bg-slate-300">
           <Search />
 
           <div className="w-[100%] flex flex-col md:flex-row bg-white ">
-            <div className="flex flex-col  w-full  lg:w-[65%] xl:w-[70%]  sm:w-[70%]  ">
+            <div className="flex flex-col  w-full  lg:w-[65%] xl:w-[70%]  sm:w-[70%] xsm:w-screen ">
               <PanelBox />
 
               <MapComponent />
