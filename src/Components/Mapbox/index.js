@@ -12,15 +12,15 @@ L.Icon.Default.mergeOptions({
   shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
 });
 
-const MapComponent = () => {
+const MapComponent = ({className}) => {
   const position = [51.505, -0.09]; 
 
   return (
 
-    <div className='flex justify-center items-center flex-col w-full px-4'>
+    
 
-    <div className=" h-[300px] w-full md:w-full lg:w-full xl:w-full m-2 ">
-        <SearchBar/>
+    <div className={className}>
+        
       
       
       <MapContainer center={position} zoom={13} scrollWheelZoom={false} className="h-full w-full ">
@@ -36,7 +36,7 @@ const MapComponent = () => {
         </Marker>
       </MapContainer>
     </div>
-    </div>
+   
   );
 };
 
