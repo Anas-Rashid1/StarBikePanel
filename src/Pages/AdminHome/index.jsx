@@ -5,7 +5,7 @@ import img1 from "../../Assets/boxImages/Shape.png";
 import SideBar from "../../Components/SideBar";
 
 import Sidebar from "../../Components/sidebar2";
-
+import { useSelector, useDispatch } from "react-redux";
 import PanelBox from "../../Components/panelBox";
 import MapComponent from "../../Components/Mapbox";
 import SearchBar from "../../Components/searchbar";
@@ -15,13 +15,21 @@ import ScooterHealth from "../../Components/ScooterHealth";
 import RecentJobs from "../../Components/RecentJobs";
 import Search from "../../Components/Search";
 import AdminLogin from "../Login";
+import { SignInRequest } from "../../Redux/SignInslice";
 
 const AdminHome = () => {
+  const dipatch = useDispatch();
+  const check = useSelector((state) => state.SingnIn.adminData.check);
+
+  dipatch(SignInRequest());
+
   return (
     <>
+      {console.log("hehe", check)}
       <Layout>
         <div className=" h-screen overflow-x-hidden bg-gray-100 relative">
           <Search />
+          {console.log("hehe", check)}
 
           <div className="w-[100%] flex flex-col md:flex-row xl:gap-12  ">
             <div className="flex flex-col  w-full md:w-[55%]  lg:w-[70%] xl:w-[70%]  sm:w-[70%]  ">
