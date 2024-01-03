@@ -1,12 +1,15 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const SignInRequest = createAsyncThunk("admin/data", async () => {
+export const SignInRequest = createAsyncThunk("admin/data", async (admin) => {
   try {
     // const { data } = axios.post("/access", { email, pass });
 
-    const { data } = await axios.get(
-      "https://jsonplaceholder.typicode.com/posts/1"
+    const { email, pass } = admin;
+
+    const { data } = await axios.post(
+      "http://localhost:3000/admin/adminlogin",
+      { email: email, password: pass }
     );
 
     return data;
@@ -33,7 +36,10 @@ const SignInSlice = createSlice({
 
   extraReducers: (request) => {
     request.addCase(SignInRequest.fulfilled, (state, action) => {
-      console.log("hehe", action.payload);
+      const p = action.payload;
+      const { token, user } = p;
+
+      state.adminData.token = token;
     });
   },
 });
