@@ -25,6 +25,7 @@ const AdminHome = () => {
     <>
       <Layout>
         <div className=" h-screen overflow-x-hidden bg-gray-100 relative">
+          <h1>sdsadafafdf</h1>
           <Search />
           <button
             onClick={() => {
