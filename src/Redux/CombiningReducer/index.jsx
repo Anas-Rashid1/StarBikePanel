@@ -6,7 +6,7 @@ import storage from "redux-persist/lib/storage";
 
 const CombiningAllreducer = combineReducers({
   SingnIn: SignInSlice.reducer,
-  ScooterData: ScooterData.reducer,
+  Scooters: ScooterData.reducer,
 });
 
 const persistConfig = {

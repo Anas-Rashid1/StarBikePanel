@@ -33,7 +33,9 @@ const ScooterData = createSlice({
       }
     },
   },
+
+  extraReducers: (builder) => {},
 });
 
-export const { updateOrAddScooter } = ScooterData.actions;
+export const { updateOrAddScooter, change } = ScooterData.actions;
 export default ScooterData;
