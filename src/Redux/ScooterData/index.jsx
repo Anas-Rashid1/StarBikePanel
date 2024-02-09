@@ -19,11 +19,15 @@ const ScooterData = createSlice({
         // If no scooter with the given imei exists, create a new one
         const newScooter = {
           imei,
-          sendMessage: "",
-          receiveMessage: "",
+          iotbattery: null,
+          scooterbattery: null,
           totalRide: null,
-          battery: null,
-          coordinates: { lat: 0, lng: 0 },
+          batterycycles: null,
+          powerstusflag: null,
+          speedlimit: null,
+          latitude: null,
+          longitude: null,
+          signalstrength: null,
           riderName: "",
           riderContact: null,
           ...updateValues,
@@ -33,9 +37,7 @@ const ScooterData = createSlice({
       }
     },
   },
-
-  extraReducers: (builder) => {},
 });
 
-export const { updateOrAddScooter, change } = ScooterData.actions;
+export const { updateOrAddScooter } = ScooterData.actions;
 export default ScooterData;
