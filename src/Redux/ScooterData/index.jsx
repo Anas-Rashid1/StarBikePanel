@@ -30,11 +30,15 @@ const ScooterData = createSlice({
           signalstrength: null,
           riderName: "",
           riderContact: null,
+          totaltrips: null,
+          totaltime: null,
+          batterycap: null,
           ...updateValues,
         };
 
         state.Scooters.push(newScooter);
       }
+      console.log(JSON.stringify(state.Scooters));
     },
   },
 });

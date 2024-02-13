@@ -20,16 +20,14 @@ import StartMqtt from "../../Components/Mqtt";
 
 const AdminHome = () => {
   const dipatch = useDispatch();
-  StartMqtt();
 
-  const check = useSelector((state) => state.SingnIn.adminData.token);
-  const check2 = useSelector((state) => state.Scooters.Scooters);
+  // const check = useSelector((state) => state.SingnIn.adminData.token);
+  // const check2 = useSelector((state) => state.Scooters.Scooters);
 
   return (
     <>
       <Layout>
         <div className=" h-screen overflow-x-hidden bg-gray-100 relative">
-          <h1>{check2} 5</h1>
           <Search />
           <button
             onClick={() => {
@@ -37,10 +35,7 @@ const AdminHome = () => {
                 SignInRequest({ email: "admin@gmail.com", pass: "admin123" })
               );
             }}
-          >
-            ppppp
-          </button>
-          {console.log("check token", check)}
+          ></button>
 
           <div className="w-[100%] flex flex-col md:flex-row xl:gap-12  ">
             <div className="flex flex-col  w-full md:w-[55%]  lg:w-[70%] xl:w-[70%]  sm:w-[70%]  ">
