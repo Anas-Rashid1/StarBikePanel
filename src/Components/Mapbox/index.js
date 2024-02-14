@@ -1,42 +1,46 @@
-import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
-import SearchBar from '../searchbar';
+import React from "react";
 
-// Fix for default marker if using Webpack
-delete L.Icon.Default.prototype._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-  iconUrl: require('leaflet/dist/images/marker-icon.png'),
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
-});
+import L from "leaflet";
+import SearchBar from "../searchbar";
+import { useMemo } from "react";
+import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
+import { useSelector } from "react-redux";
 
-const MapComponent = ({className}) => {
-  const position = [51.505, -0.09]; 
+// Fix for
+const MapComponent = () => {
+  const ScooterData = useSelector((state) => state.Scooters.Scooters);
+  console.log("plzzz", ScooterData);
+
+  const { isLoaded } = useJsApiLoader({
+    id: "google-map-script",
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
+  });
+  const center = useMemo(() => ({ lat: 35.417416, lng: 24.530005 }), []);
 
   return (
-
-    
-
-    <div className={className}>
-        
-      
-      
-      <MapContainer center={position} zoom={13} scrollWheelZoom={false} className="h-full w-full ">
-      <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          className='w-full'
-        />
-        <Marker position={position}>
-          <Popup>
-            this is popup.
-          </Popup>
-        </Marker>
-      </MapContainer>
+    <div>
+      {!isLoaded ? (
+        <h1>Loading...</h1>
+      ) : (
+        <GoogleMap
+          mapContainerStyle={{ width: "64vw", height: "350px" }}
+          center={center}
+          options={{ disableDefaultUI: true }}
+          zoom={10}
+        >
+          {/* <Marker key={"ssdd"} position={{ lat: 35.365575, lng: 24.502875 }} />
+           */}
+          {ScooterData.map((scooter) => {
+            return (
+              <Marker
+                key={scooter?.imei}
+                position={{ lat: scooter?.latitude, lng: scooter?.longitude }}
+              />
+            );
+          })}
+        </GoogleMap>
+      )}
     </div>
-   
   );
 };
 

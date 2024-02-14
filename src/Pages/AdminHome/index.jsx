@@ -45,11 +45,7 @@ const AdminHome = () => {
                   <SearchBar />
                 </div>
 
-                <MapComponent
-                  className={
-                    " h-[300px] w-full md:w-full lg:w-full xl:w-full m-2 "
-                  }
-                />
+                <MapComponent />
               </div>
               <CostAnalysisGraph />
             </div>

@@ -32,7 +32,7 @@ const ScooterData = createSlice({
           riderContact: null,
           totaltrips: null,
           totaltime: null,
-          batterycap: null,
+          batterycapacity: null,
           ...updateValues,
         };
 
