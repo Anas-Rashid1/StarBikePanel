@@ -2,26 +2,76 @@ import React from "react";
 import Layout from "../Layout";
 import Scooter from "../../Assets/ScooterHealth/Scooter.png";
 import { DatePicker } from "antd";
-const ScooterHealth = () => {
+import { geocode, setKey, setLanguage, fromAddress } from "react-geocode";
+const ScooterHealth = ({ activeScooter }) => {
+  const AddressFromLatLong = (lat, long) => {
+    geocode("latlng", `${lat},${long}`, {
+      key: process.env.REACT_APP_GOOGLE_API_KEY,
+      language: "en",
+      region: "gr",
+    })
+      .then((response) => {
+        const address = response[0].formatted_address;
+        return address;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  // const newScooter = {
+  //   imei: imei,
+  //   iotbattery: null,
+  //   scooterbattery: null,
+  //   totalRide: null,
+  //   batterycycles: null,
+  //   powerstusflag: null,
+  //   speedlimit: null,
+  //   latitude: null,
+  //   longitude: null,
+  //   signalstrength: null,
+  //   riderName: "",
+  //   riderContact: null,
+  //   totaltrips: null,
+  //   totaltime: null,
+  //   batterycapacity: null,
+  //   ...updateValues,
+  // };
   const ScooterHealthData = [
     {
       name: "Battery",
-      value: "50%",
+      value: activeScooter?.scooterbattery,
       color: "green",
     },
+
+    {
+      name: "Speed Limit",
+      value: activeScooter?.speedlimit,
+      color: "green",
+    },
+
+    {
+      name: "Iot Battery",
+      value: activeScooter?.iotbattery,
+      color: "green",
+    },
+
     {
       name: "Engine Status",
-      value: "ON",
+      value: activeScooter?.powerstatusflag,
       color: "yellow",
     },
+
     {
-      name: "Distance",
-      value: "150km",
-      color: "Red",
+      name: "Battery Capacity",
+      value: activeScooter?.batterycapacity,
+      color: "purple",
     },
     {
-      name: "Battery Life",
-      value: "99%",
+      name: "Scooter Address",
+      value: AddressFromLatLong(
+        activeScooter?.latitude,
+        activeScooter?.longitude
+      ),
       color: "purple",
     },
   ];

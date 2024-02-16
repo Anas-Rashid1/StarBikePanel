@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // import { Col, Image, MenuItemProps } from "antd";
 import img1 from "../../Assets/boxImages/Shape.png";
 
@@ -19,6 +19,7 @@ import { SignInRequest } from "../../Redux/SignInslice";
 import StartMqtt from "../../Components/Mqtt";
 
 const AdminHome = () => {
+  const [activeScooter, setActiveScooter] = useState();
   const dipatch = useDispatch();
 
   // const check = useSelector((state) => state.SingnIn.adminData.token);
@@ -45,12 +46,12 @@ const AdminHome = () => {
                   <SearchBar />
                 </div>
 
-                <MapComponent />
+                <MapComponent setActiveScooter={setActiveScooter} />
               </div>
               <CostAnalysisGraph />
             </div>
             <div className="flex flex-col gap-12  mt-4">
-              <ScooterHealth />
+              <ScooterHealth activeScooter={activeScooter} />
               <RecentJobs />
             </div>
           </div>

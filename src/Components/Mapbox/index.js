@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import L from "leaflet";
 import SearchBar from "../searchbar";
 import { useMemo } from "react";
-import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
+import { GoogleMap, useJsApiLoader, MarkerF } from "@react-google-maps/api";
 import { useSelector } from "react-redux";
 
 // Fix for
-const MapComponent = () => {
-  const ScooterData = useSelector((state) => state.Scooters.Scooters);
+const MapComponent = ({ setActiveScooter }) => {
+  // const ScooterData = useSelector((state) => state.Scooters.Scooters);
+  const [ScooterData, SetScooterData] = useState(
+    useSelector((state) => state.Scooters.Scooters)
+  );
   console.log("plzzz", ScooterData);
 
   const { isLoaded } = useJsApiLoader({
@@ -32,10 +35,13 @@ const MapComponent = () => {
            */}
           {ScooterData.map((scooter) => {
             return (
-              <Marker
-                key={scooter?.imei}
-                position={{ lat: scooter?.latitude, lng: scooter?.longitude }}
-              />
+              <div>
+                <MarkerF
+                  key={scooter.imei}
+                  position={{ lat: scooter?.latitude, lng: scooter?.longitude }}
+                  onClick={() => setActiveScooter(scooter)}
+                />
+              </div>
             );
           })}
         </GoogleMap>
