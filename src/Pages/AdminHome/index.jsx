@@ -15,7 +15,7 @@ import ScooterHealth from "../../Components/ScooterHealth";
 import RecentJobs from "../../Components/RecentJobs";
 import Search from "../../Components/Search";
 import AdminLogin from "../Login";
-import { SignInRequest } from "../../Redux/SignInslice";
+
 import StartMqtt from "../../Components/Mqtt";
 
 const AdminHome = () => {
@@ -27,15 +27,11 @@ const AdminHome = () => {
 
   return (
     <>
-      <Layout>
+
         <div className=" h-screen overflow-x-hidden bg-gray-100 relative">
           <Search />
           <button
-            onClick={() => {
-              dipatch(
-                SignInRequest({ email: "admin@gmail.com", pass: "admin123" })
-              );
-            }}
+            
           ></button>
 
           <div className="w-[100%] flex flex-col md:flex-row xl:gap-12  ">
@@ -56,7 +52,7 @@ const AdminHome = () => {
             </div>
           </div>
         </div>
-      </Layout>
+     
     </>
   );
 };

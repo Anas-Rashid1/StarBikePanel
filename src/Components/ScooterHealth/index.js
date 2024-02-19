@@ -36,6 +36,8 @@ const ScooterHealth = ({ activeScooter }) => {
   //   batterycapacity: null,
   //   ...updateValues,
   // };
+
+  console.log(activeScooter , "scooterr..")
   const ScooterHealthData = [
     {
       name: "Battery",

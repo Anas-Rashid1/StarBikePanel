@@ -14,11 +14,15 @@ import AdminLogin from "./Pages/Login";
 import Layout from "./Components/Layout";
 import StartMqtt from "./Components/Mqtt";
 
+
 function App() {
   StartMqtt();
   return (
     <BrowserRouter>
+       <Layout>
+    
       <Routes>
+     
         <Route path="/" element={<AdminHome />} />
         <Route path="/feedback" element={<FeedbackPage />} />
         <Route path="/help" element={<HelpPage />} />
@@ -29,7 +33,9 @@ function App() {
         <Route path="/settings" element={<SettingPage />} />
         <Route path="/user" element={<UserPage />} />
         <Route path="/login" element={<AdminLogin />} />
+        
       </Routes>
+      </Layout>
     </BrowserRouter>
   );
 }

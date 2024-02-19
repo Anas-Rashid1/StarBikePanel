@@ -44,7 +44,7 @@ const ScooterPage = () => {
     },
   ];
   return (
-    <Layout>
+
  
       <div className="relative h-screen overflow-x-hidden w-full bg-gray-100 px-2 md:px-6">
         <Search />
@@ -105,7 +105,7 @@ const ScooterPage = () => {
           
         
       </div>
-      </Layout>
+    
   
   );
 };
