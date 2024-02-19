@@ -38,10 +38,10 @@ const AdminHome = () => {
             }}
           ></button>
 
-          <div className="w-[100%] flex flex-col lg:flex-row xl:gap-12 lg:gap-2 ">
+          <div className="w-[100%] flex flex-col lg:flex-row xl:gap-12">
             <div className="flex flex-col  w-full md:w-[90%]  lg:w-[70%] xl:w-[70%]  sm:w-[70%]  ">
               <PanelBox />
-              <div className="flex justify-center items-center flex-col w-full lg:w-[90%] mb-4 mx-5">
+              <div className="flex justify-center items-center flex-col w-full lg:w-[97%] mb-4 mx-5">
                 <div className=" w-full md:w-full lg:w-full xl:w-full my-2">
                   <SearchBar />
                 </div>
