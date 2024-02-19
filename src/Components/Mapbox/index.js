@@ -21,7 +21,7 @@ const MapComponent = ({ setActiveScooter }) => {
   const center = useMemo(() => ({ lat: 35.417416, lng: 24.530005 }), []);
 
   return (
-    <div>
+    <div className="mx-5">
       {!isLoaded ? (
         <h1>Loading...</h1>
       ) : (

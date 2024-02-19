@@ -23,7 +23,7 @@ const data = [
 
 const PanelBox = () => {
   return (
-    <div className="flex min-[200px]:flex-col md:flex-row   items-center  ">
+    <div className="flex min-[200px]:flex-col md:flex-row   items-center mx-3 ">
       {data.map((item, index) => (
         <div
           key={index}
