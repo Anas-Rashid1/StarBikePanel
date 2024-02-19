@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 const ScooterBattery = ({ batteryPercentage }) => {
+  console.log(batteryPercentage, "batteryPercentage")
   const numberOfBars = 5; // Change the number of bars as needed
   const [filledBars, setFilledBars] = useState(0);
 
@@ -16,7 +17,7 @@ const ScooterBattery = ({ batteryPercentage }) => {
       {[...Array(filledBars)].map((_, index) => (
         <div
           key={index}
-          className={`h-6 w-2 ${filledBars>3 ? "bg-green-600" : "bg-yellow-600"}  mb-1`}
+          className={`h-6 w-2 ${filledBars>3? "bg-green-600" : "bg-yellow-600"}  mb-1`}
          
         />
       ))}
