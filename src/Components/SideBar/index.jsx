@@ -1,6 +1,7 @@
 import React, { useState , useEffect } from "react";
 import { Col, Image } from "antd";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import logo from "../../Assets/Logo/Logo.png";
 import greyIcon_dashboard from "../../Assets/SideBarIcons/DashBoard.png";
 import greyIcon_feedback from "../../Assets/SideBarIcons/FeedBack.png";
@@ -66,10 +67,10 @@ const General = [
 ];
 
 const Account = [
-  { id: 8, Name: "Help", GreyIcon: greyIcon_help, ColorIcon: colorIcon_help },
+  { id: 7, Name: "Help", GreyIcon: greyIcon_help, ColorIcon: colorIcon_help },
 
   {
-    id: 9,
+    id: 8,
     Name: "Setting",
     GreyIcon: greyIcon_settings,
     ColorIcon: colorIcon_settings,
@@ -78,7 +79,8 @@ const Account = [
 ];
 
 const SideBar = () => {
-  const [selectedItem, setSelectedItem] = useState(1);
+  const navigate = useNavigate();
+  const [selectedItem, setSelectedItem] = useState();
   const [open, setOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 500);
 
@@ -107,7 +109,9 @@ const SideBar = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [selectedItem]);
+
+
 
   const handleArrowButtonClick = () => {
   
@@ -134,13 +138,17 @@ const SideBar = () => {
       </p>
       {General.map((item) => {
         return (
-          <Link to={item.path}>
+          
           <div>
             <div
               id={item?.id}
-              className=" text-sidebarheadingcolor pt-2  hover:text-sidebarheadinghoveringcolor cursor-pointer" 
+              className=" text-sidebarheadingcolor pt-2   hover:text-sidebarheadinghoveringcolor cursor-pointer" 
               onClick={() => {
-                setSelectedItem(item?.id);
+               navigate(item?.path)
+
+               setSelectedItem(item?.id);
+               console.log(item?.id , "item id..")
+            
               }}
             >
               <div class="box h-4 w-8">
@@ -149,13 +157,16 @@ const SideBar = () => {
                 )}
               </div>
 
-              {item?.id === selectedItem ? (
+              {item?.id == selectedItem ? (
+              
                 <div className=" flex flex-row mb-2 ml-10">
-                  <div className="">
-                  <Image src={item?.ColorIcon} width={20} preview={false} className="" /></div>
+                  {   console.log(selectedItem , "selecteditem...")}
+                  
+                  <Image src={item?.ColorIcon} width={20} preview={false} className="" />
                   <p className={` ml-6  text-sidebarheadinghoveringcolor  ${!open && "hidden"}`} >
                     {item.Name}
                   </p>
+                
                 </div>
               ) : (
                 <div className=" flex flex-row mb-2  ml-10 ">
@@ -167,7 +178,7 @@ const SideBar = () => {
               )}
             </div>
           </div>
-          </Link>
+          
         );
       })}
 
