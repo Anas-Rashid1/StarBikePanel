@@ -8,11 +8,8 @@ import { useSelector } from "react-redux";
 
 // Fix for
 const MapComponent = ({ setActiveScooter }) => {
+  const ScooterData = useSelector((state) => state.Scooters.Scooters);
   // const ScooterData = useSelector((state) => state.Scooters.Scooters);
-  const [ScooterData, SetScooterData] = useState(
-    useSelector((state) => state.Scooters.Scooters)
-  );
-  console.log("plzzz", ScooterData);
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",

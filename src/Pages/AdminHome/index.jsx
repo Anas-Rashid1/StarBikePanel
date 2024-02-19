@@ -21,6 +21,7 @@ import StartMqtt from "../../Components/Mqtt";
 const AdminHome = () => {
   const [activeScooter, setActiveScooter] = useState();
   const dipatch = useDispatch();
+  const ScooterData = useSelector((state) => state.Scooters.Scooters);
 
   // const check = useSelector((state) => state.SingnIn.adminData.token);
   // const check2 = useSelector((state) => state.Scooters.Scooters);
@@ -46,7 +47,10 @@ const AdminHome = () => {
                   <SearchBar />
                 </div>
 
-                <MapComponent setActiveScooter={setActiveScooter} />
+                <MapComponent
+                  setActiveScooter={setActiveScooter}
+                  activeScooter={activeScooter}
+                />
               </div>
               <CostAnalysisGraph />
             </div>
