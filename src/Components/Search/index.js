@@ -16,7 +16,7 @@ const Search = () => {
       </div>
       <div className="flex flex-row gap-2 ml-6  ">
         <div className="w-8 h-8 bg-gray-500 rounded-full"></div>
-        <p className="mt-[5px] font-medium ">Fletch Skinner</p>
+        <p className="mt-[5px] font-medium hidden sm:inline-block  ">Fletch Skinner</p>
       </div>
     </div>
   );

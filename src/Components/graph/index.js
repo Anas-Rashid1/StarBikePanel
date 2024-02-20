@@ -110,7 +110,7 @@ const CostAnalysisGraph = () => {
   }, []);
 
   return (
-    <div className="flex flex-col   justify-center px-2  p-4  mt-12 bg-white m-4">
+    <div className="flex flex-col w-[100%]  justify-center px-2  p-4  mt-12 bg-white ">
       <div className="flex w-full justify-between flex-col sm:flex-row">
         <h2 className="text-xl font-bold mb-4  flex justify-center ">
           Cost Analysis
@@ -143,7 +143,7 @@ const CostAnalysisGraph = () => {
         </select>
       </div>
 
-      <div className="w-full mt-4 ml-3 ">
+      <div className="w-[100%] mt-4 ml-3 flex justify-center ">
         <Line data={data} options={options} />
       </div>
     </div>
