@@ -9,6 +9,7 @@ import { geocode } from "react-geocode";
 import star from "../../Assets/Review/star.png"
 import { json } from "react-router-dom";
 import ToggleButton from "../../Components/togglebutton";
+import Signalstrength from "../../Components/SignalStrength";
 
 const ScooterPage = ({ setActiveScooter }) => {
   const [ScootersData, SetScooterData] = useState(
@@ -70,7 +71,7 @@ const ScooterPage = ({ setActiveScooter }) => {
     },
   ];
   return (
-
+    
 
       <div className="relative h-screen overflow-x-hidden w-full bg-gray-100 px-2 md:px-6">
         <Search />
@@ -117,7 +118,7 @@ const ScooterPage = ({ setActiveScooter }) => {
                       <a href="">{AddressFromLatLong(item?.latitude, item?.longitude)}</a>
 
                     </td>
-                    <td class="lg:px-6 md:px-4 px-4 py-4 flex flex-row gap-2"><div className="w-4"><img src={star} className="w-full mt-[4px]" /></div>{item?.signalstrength === undefined ?0:item?.signalstrength}</td>
+                    <td class="lg:px-6 md:px-4 px-4 py-4 flex flex-row gap-2"><Signalstrength batteryPercentage={item?.signalstrength}/>{item?.signalstrength === undefined ?0:item?.signalstrength}</td>
                     <td class={`lg:px-6 md:px-4 px-4 py-4 ${item.status == "active" ? "text-green-500" : "text-sidebarheadinghoveringcolor"}`}>
                       <ToggleButton/>
                     </td>
@@ -132,7 +133,7 @@ const ScooterPage = ({ setActiveScooter }) => {
 
 
       </div>
-
+ 
 
   );
 };

@@ -21,8 +21,7 @@ function App() {
   StartMqtt();
   return (
     <BrowserRouter>
-       <Layout>
-    
+    <Layout>
       <Routes>
      
         <Route path="/" element={<AdminHome />} />

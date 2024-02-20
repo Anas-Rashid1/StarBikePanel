@@ -27,7 +27,7 @@ const ScooterBattery = ({ batteryPercentage }) => {
         [...Array((numberOfBars-filledBars))].map((_, index) => (
             <div
               key={index}
-              className={`h-6 w-2 bg-gray-400 mb-1`}
+              className={`h-6 w-2 bg-gray-600 mb-1`}
              
             />
           ))
