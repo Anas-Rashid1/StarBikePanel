@@ -8,14 +8,15 @@ export const SignInRequest = createAsyncThunk("admin/data", async (admin) => {
     const { email, pass } = admin;
 
     const { data } = await axios.post(
-      "http://localhost:3000/admin/adminlogin",
-      { email: email, password: pass }
+      "https://dummyjson.com/auth/login",
+      { username: email, password: pass }
     );
 
     return data;
   } catch (error) {
     console.log("Something went Worng");
   }
+ 
 });
 
 const SignInSlice = createSlice({
@@ -23,7 +24,7 @@ const SignInSlice = createSlice({
   initialState: {
     adminData: {
       token: null,
-      name: null,
+      username: null,
       phoneNumber: null,
       check: "AAA",
     },
@@ -37,9 +38,11 @@ const SignInSlice = createSlice({
   extraReducers: (request) => {
     request.addCase(SignInRequest.fulfilled, (state, action) => {
       const p = action.payload;
-      const { token, user } = p;
+      console.log(p , "checkingg p...")
+      const { token ,username } = p;
 
       state.adminData.token = token;
+      state.adminData.username = username;
     });
   },
 });

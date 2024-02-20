@@ -79,7 +79,7 @@ const ScooterPage = ({ setActiveScooter }) => {
         <div className=" bg-white px-2 pt-4 justify-center items-center mt-10 w-full  h-auto">
           <div class="relative overflow-x-auto  justify-center items-center  px-4  sm:rounded-lg">
 
-            <table class="text-md  text-left  text-gray-500 dark:text-gray-400 m-auto   lg:w-full md:w-[40%] h-full">
+            <table class="text-md  text-left bg-white  text-gray-500 dark:text-gray-400 m-auto   lg:w-full md:w-[40%] h-full">
               <thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                   <th scope="col" class="lg:px-6 md:px-4 px-4 py-3">
