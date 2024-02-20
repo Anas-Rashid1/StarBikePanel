@@ -34,7 +34,7 @@ const CustomLineChart = () => {
   const [startDate, setStartDate] = useState(new Date());
 
   return (
-    <Layout>
+
     <div className=" h-screen overflow-x-hidden bg-gray-50 relative">
       <Search/>
       
@@ -96,7 +96,7 @@ const CustomLineChart = () => {
 
     <CustomBarChart/>
     </div>
-    </Layout>
+   
   );
 };
 

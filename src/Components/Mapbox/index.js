@@ -19,12 +19,12 @@ const MapComponent = ({ setActiveScooter }) => {
   const center = useMemo(() => ({ lat: 35.417416, lng: 24.530005 }), []);
 
   return (
-    <div>
+    <div className="mx-5">
       {!isLoaded ? (
         <h1>Loading...</h1>
       ) : (
         <GoogleMap
-          mapContainerStyle={{ width: "64vw", height: "350px" }}
+          mapContainerStyle={{ width: "50vw", height: "350px" }}
           center={center}
           options={{ disableDefaultUI: true }}
           zoom={10}

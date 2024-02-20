@@ -49,6 +49,8 @@ const ScooterHealth = ({ activeScooterImei }) => {
   //   batterycapacity: null,
   //   ...updateValues,
   // };
+
+  console.log(activeScooter , "scooterr..")
   const ScooterHealthData = [
     {
       name: "Battery",
@@ -99,17 +101,16 @@ const ScooterHealth = ({ activeScooterImei }) => {
     },
   ];
   return (
-    <>
-      <div className="w-[95%] h-[40%] bg-white px-6 py-4 rounded-lg ml-2">
-        <div className="flex flex-row justify-between">
-          <h1 className="text-xl font-semibold">Scooter Health</h1>
-          <div className="w-[30%]">
-            <DatePicker picker="year" />
-          </div>
+    <div className="w-[100%] bg-white px-6 py-4 rounded-lg">
+      <div className="flex flex-row justify-between">
+        <h1 className="text-xl font-semibold">Scooter Health</h1>
+        <div className="w-[30%]">
+          <DatePicker picker="year" />
         </div>
-        <div className="items-center justify-center flex h-[200px]">
-          <img className=" w-30 object-cover" src={Scooter} />
-        </div>
+      </div>
+      <div className="items-center justify-center flex h-[200px]">
+        <img className=" w-30 object-cover" src={Scooter} />
+      </div>
 
         <hr />
         <div className="w-full flex flex-col gap-4 mt-2">
@@ -130,7 +131,7 @@ const ScooterHealth = ({ activeScooterImei }) => {
           ))}
         </div>
       </div>
-    </>
+ 
   );
 };
 

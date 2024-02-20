@@ -2,10 +2,17 @@ import React from "react";
 import bgimg from "../../Assets/Login/loginbg.png";
 import logo from "../../Assets/Logo/Logo.png";
 import { useState } from "react";
+import { useDispatch , useSelector } from "react-redux";
+import { SignInRequest } from "../../Redux/SignInslice";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+ 
+  const dipatch = useDispatch();
+
+  const authToken = useSelector((state) => state.SingnIn.adminData.token);
+ 
   return (
     <div
       className="w-screen h-screen flex md:flex-row flex-col-reverse justify-between"
@@ -41,7 +48,15 @@ const AdminLogin = () => {
               className=" py-2 px-4 bg-gray-300 text-gray-700 shadow-md shadow-slate-700 w-full rounded-[20px]"
             />
           </div>
-          <button className="w-[70%] bg-sidebarheadinghoveringcolor text-black rounded-[20px] px-4 py-2 mb-12">
+          <button className="w-[70%] bg-sidebarheadinghoveringcolor text-black rounded-[20px] px-4 py-2 mb-12"
+          onClick={() => {
+            dipatch(
+              SignInRequest({ email: "kminchelle", pass: "0lelplR" })
+            );
+            localStorage.setItem('token', authToken);
+          }}>
+            {console.log(authToken , "token check...")}
+            
             Sign In
           </button>
         </div>

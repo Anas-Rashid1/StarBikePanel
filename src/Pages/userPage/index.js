@@ -37,7 +37,7 @@ const UserPage = () => {
     contact:"03212454190"
   },]
   return (
-    <Layout>
+  
     
        <div className="relative md:w-full h-screen overflow-x-hidden bg-gray-100 px-2">
       <Search/>
@@ -101,7 +101,7 @@ const UserPage = () => {
          
       
        </div>
-       </Layout>
+      
       
     
   )

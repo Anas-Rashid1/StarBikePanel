@@ -1,6 +1,7 @@
 import React, { useState , useEffect } from "react";
 import { Col, Image } from "antd";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import logo from "../../Assets/Logo/Logo.png";
 import greyIcon_dashboard from "../../Assets/SideBarIcons/DashBoard.png";
 import greyIcon_feedback from "../../Assets/SideBarIcons/FeedBack.png";
@@ -66,10 +67,10 @@ const General = [
 ];
 
 const Account = [
-  { id: 8, Name: "Help", GreyIcon: greyIcon_help, ColorIcon: colorIcon_help },
+  { id: 7, Name: "Help", GreyIcon: greyIcon_help, ColorIcon: colorIcon_help },
 
   {
-    id: 9,
+    id: 8,
     Name: "Setting",
     GreyIcon: greyIcon_settings,
     ColorIcon: colorIcon_settings,
@@ -78,7 +79,8 @@ const Account = [
 ];
 
 const SideBar = () => {
-  const [selectedItem, setSelectedItem] = useState(1);
+  const navigate = useNavigate();
+  const [selectedItem, setSelectedItem] = useState();
   const [open, setOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 500);
 
@@ -107,7 +109,9 @@ const SideBar = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [selectedItem]);
+
+
 
   const handleArrowButtonClick = () => {
   
@@ -118,13 +122,13 @@ const SideBar = () => {
 
 
   return (
-    <div className={`${open ? "w-56" : "w-20"}   bg-white h-auto duration-300 sticky overflow-y-auto `}>
+    <div className={`${open ? "w-56" : "w-20"} ${open ? "pl-4" : "pl-2"}   bg-white h-auto duration-300 sticky overflow-y-auto `}>
         
     
      
-      <div className="bg-white flex flex-col justify-center items-center gap-2">
+      <div className="bg-white flex flex-col justify-center items-center gap-4">
 
-        <Image src={logo} width={67} preview={false} />
+        <Image src={logo} width={55} preview={false} />
         <BsArrowLeftShort className={`bg-ordinary text-sidebarheadinghoveringcolor text-3xl rounded-full   z-50 top-9 border border-sidebarheadinghoveringcolor cursor-pointer ${!open && "rotate-180"}  ${isMobile && "hidden" }` } onClick={handleArrowButtonClick}/>
       </div>
     
@@ -134,13 +138,17 @@ const SideBar = () => {
       </p>
       {General.map((item) => {
         return (
-          <Link to={item.path}>
+          
           <div>
             <div
               id={item?.id}
-              className=" text-sidebarheadingcolor pt-2  hover:text-sidebarheadinghoveringcolor cursor-pointer" 
+              className=" text-sidebarheadingcolor pt-2   hover:text-sidebarheadinghoveringcolor cursor-pointer" 
               onClick={() => {
-                setSelectedItem(item?.id);
+               navigate(item?.path)
+
+               setSelectedItem(item?.id);
+               console.log(item?.id , "item id..")
+            
               }}
             >
               <div class="box h-4 w-8">
@@ -149,25 +157,28 @@ const SideBar = () => {
                 )}
               </div>
 
-              {item?.id === selectedItem ? (
-                <div className=" flex flex-row mb-2 ml-10">
-                  <div className="">
-                  <Image src={item?.ColorIcon} width={20} preview={false} className="" /></div>
-                  <p className={` ml-6  text-sidebarheadinghoveringcolor  ${!open && "hidden"}`} >
+              {item?.id == selectedItem ? (
+              
+                <div className=" flex flex-row mb-2 ml-6">
+                  {   console.log(selectedItem , "selecteditem...")}
+                  
+                  <Image src={item?.ColorIcon} width={20} preview={false} className="" />
+                  <p className={` ml-4  text-sidebarheadinghoveringcolor  ${!open && "hidden"}`} >
                     {item.Name}
                   </p>
+                
                 </div>
               ) : (
-                <div className=" flex flex-row mb-2  ml-10 ">
+                <div className=" flex flex-row mb-2  ml-6 ">
                   <Image src={item?.GreyIcon} width={20} preview={false} className=" "  />
-                  <p className={ `ml-6  text-sidebarheadingcolor ${!open && "hidden"}`  }>
+                  <p className={ `ml-4  text-sidebarheadingcolor ${!open && "hidden"}`  }>
                     {item.Name}
                   </p>
                 </div>
               )}
             </div>
           </div>
-          </Link>
+          
         );
       })}
 
@@ -192,16 +203,16 @@ const SideBar = () => {
               </div>
 
               {item?.id === selectedItem ? (
-                <div className=" flex  ml-10">
+                <div className=" flex  ml-6">
                   <Image src={item?.ColorIcon} width={20} preview={false} className="" />
-                  <p className={ `ml-6   text-sidebarheadinghoveringcolor  ${!open && "hidden"}`  }>
+                  <p className={ `ml-4   text-sidebarheadinghoveringcolor  ${!open && "hidden"}`  }>
                     {item.Name}
                   </p>
                 </div>
               ) : (
-                <div className=" flex flex-row  ml-10 ">
+                <div className=" flex flex-row  ml-6 ">
                   <Image src={item?.GreyIcon} width={20} preview={false} className="" />
-                  <p className={` ml-6   text-sidebarheadingcolor ${!open && "hidden"}` }>
+                  <p className={` ml-4   text-sidebarheadingcolor ${!open && "hidden"}` }>
                     {item.Name}
                   </p>
                 </div>
