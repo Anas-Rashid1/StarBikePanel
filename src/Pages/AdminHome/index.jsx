@@ -50,7 +50,7 @@ const AdminHome = () => {
             </div>
           </div>
           <div className="flex flex-col md:w-[90%]  gap-12 md:mx-5  mt-4">
-            <ScooterHealth activeScooter={activeScooter} />
+            <ScooterHealth activeScooterImei={activeScooter} />
             <RecentJobs />
           </div>
         </div>

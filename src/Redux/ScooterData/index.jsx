@@ -1,5 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const ScooterLed = createSlice({
+  name: "ScooterLed",
+  initialState: {
+    ScootersLed: [],
+  },
+  reducers: {
+    updateOrAddLed: (state, action) => {
+      const { imei, status } = action.payload;
+
+      const exist = state.ScootersLed.find((scooter) => scooter.imei === imei);
+      if (exist) {
+        exist.status = status;
+      } else {
+        state.ScootersLed.push({ imei: imei, status: status });
+      }
+    },
+  },
+});
+
 const ScooterData = createSlice({
   name: "Scooter",
   initialState: {
