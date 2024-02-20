@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Client } from "paho-mqtt";
 import { updateOrAddScooter } from "../../Redux/ScooterData";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
 import { json } from "react-router-dom";
 
 const Imei = [
@@ -9,6 +10,7 @@ const Imei = [
   "862427062323607",
   "862427062327145", //YES
   "862427062322211", //YES
+
   "862427062327285", //YES
   "862427062327046", //YES
   "862427065357917", //YES
@@ -19,6 +21,8 @@ const Imei = [
 
 const StartMqtt = () => {
   const dispatch = useDispatch();
+  const ScooterData = useSelector((state) => state.Scooters.Scooters);
+
   // Create an instance of the MQTT client
   const client = new Client(
     "broker.hivemq.com",
@@ -64,7 +68,12 @@ const StartMqtt = () => {
     let { mt } = JSON.parse(message.payloadString);
     if (mt === 2) {
       // ,la,lo,ss,ib,sb,cy,sl
-      let { la, lo, ss, ib, sb, cy, sl } = JSON.parse(message.payloadString);
+      let { la, lo, ss, ib, sb, cy, sl, pw, rf, sf } = JSON.parse(
+        message.payloadString
+      );
+
+      console.log("status ", sf);
+
       dispatch(
         updateOrAddScooter({
           imei: imei,
@@ -75,10 +84,11 @@ const StartMqtt = () => {
           scooterbattery: sb,
           batterycycles: cy,
           speedlimit: sl,
+          powerstusflag: "anas",
         })
       );
       console.log("Imei :", imei, "Message Type ", mt);
-    } else if (mt === 5) {
+    } else if (mt == 5) {
       let { totrip, totime, tocap } = JSON.parse(message.payloadString);
 
       dispatch(
@@ -89,9 +99,9 @@ const StartMqtt = () => {
           batterycapacity: `${tocap} mAh`,
         })
       );
-      console.log("Imei :", imei, "Message Type ", mt);
+      console.log("Imei :", imei, "Message Type 445 ", mt);
     }
-    // console.log("Imei :", imei, "Message Type ", mt);
+    console.log("yele :", ScooterData);
   };
 
   // Return the MQTT client instance

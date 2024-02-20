@@ -58,14 +58,24 @@ const ScooterHealth = ({ activeScooter }) => {
     },
 
     {
-      name: "Engine Status",
-      value: activeScooter?.powerstatusflag,
-      color: "yellow",
+      name: "Signal Strength",
+      value: activeScooter?.signalstrength,
+      color: "red",
     },
 
     {
       name: "Battery Capacity",
       value: activeScooter?.batterycapacity,
+      color: "purple",
+    },
+    {
+      name: "Imei",
+      value: activeScooter?.imei,
+      color: "purple",
+    },
+    {
+      name: "flag",
+      value: activeScooter?.powerstusflag,
       color: "purple",
     },
     {
@@ -89,25 +99,26 @@ const ScooterHealth = ({ activeScooter }) => {
         <img className=" w-30 object-cover" src={Scooter} />
       </div>
 
-      <hr />
-      <div className="w-full flex flex-col gap-4 mt-2">
-        {ScooterHealthData.map((item) => (
-          <div
-            className="flex flex-row justify-between items-center"
-            style={{ color: `${item.color}` }}
-          >
-            <div className="flex flex-row gap-4">
-              <div
-                className="w-2 h-2 rounded-full mt-[10px]"
-                style={{ backgroundColor: `${item.color}` }}
-              ></div>
-              <div className="text-black">{item.name}</div>
+        <hr />
+        <div className="w-full flex flex-col gap-4 mt-2">
+          {ScooterHealthData.map((item) => (
+            <div
+              className="flex flex-row justify-between items-center"
+              style={{ color: `${item.color}` }}
+            >
+              <div className="flex flex-row gap-4">
+                <div
+                  className="w-2 h-2 rounded-full mt-[10px]"
+                  style={{ backgroundColor: `${item.color}` }}
+                ></div>
+                <div className="text-black">{item.name}</div>
+              </div>
+              <div>{item.value}</div>
             </div>
-            <div>{item.value}</div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+ 
   );
 };
 
