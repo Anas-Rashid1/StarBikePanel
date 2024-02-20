@@ -122,13 +122,13 @@ const SideBar = () => {
 
 
   return (
-    <div className={`${open ? "w-56" : "w-20"}   bg-white h-auto duration-300 sticky overflow-y-auto `}>
+    <div className={`${open ? "w-56" : "w-20"} ${open ? "pl-4" : "pl-2"}   bg-white h-auto duration-300 sticky overflow-y-auto `}>
         
     
      
-      <div className="bg-white flex flex-col justify-center items-center gap-2">
+      <div className="bg-white flex flex-col justify-center items-center gap-4">
 
-        <Image src={logo} width={67} preview={false} />
+        <Image src={logo} width={55} preview={false} />
         <BsArrowLeftShort className={`bg-ordinary text-sidebarheadinghoveringcolor text-3xl rounded-full   z-50 top-9 border border-sidebarheadinghoveringcolor cursor-pointer ${!open && "rotate-180"}  ${isMobile && "hidden" }` } onClick={handleArrowButtonClick}/>
       </div>
     
@@ -159,19 +159,19 @@ const SideBar = () => {
 
               {item?.id == selectedItem ? (
               
-                <div className=" flex flex-row mb-2 ml-10">
+                <div className=" flex flex-row mb-2 ml-6">
                   {   console.log(selectedItem , "selecteditem...")}
                   
                   <Image src={item?.ColorIcon} width={20} preview={false} className="" />
-                  <p className={` ml-6  text-sidebarheadinghoveringcolor  ${!open && "hidden"}`} >
+                  <p className={` ml-4  text-sidebarheadinghoveringcolor  ${!open && "hidden"}`} >
                     {item.Name}
                   </p>
                 
                 </div>
               ) : (
-                <div className=" flex flex-row mb-2  ml-10 ">
+                <div className=" flex flex-row mb-2  ml-6 ">
                   <Image src={item?.GreyIcon} width={20} preview={false} className=" "  />
-                  <p className={ `ml-6  text-sidebarheadingcolor ${!open && "hidden"}`  }>
+                  <p className={ `ml-4  text-sidebarheadingcolor ${!open && "hidden"}`  }>
                     {item.Name}
                   </p>
                 </div>
@@ -203,16 +203,16 @@ const SideBar = () => {
               </div>
 
               {item?.id === selectedItem ? (
-                <div className=" flex  ml-10">
+                <div className=" flex  ml-6">
                   <Image src={item?.ColorIcon} width={20} preview={false} className="" />
-                  <p className={ `ml-6   text-sidebarheadinghoveringcolor  ${!open && "hidden"}`  }>
+                  <p className={ `ml-4   text-sidebarheadinghoveringcolor  ${!open && "hidden"}`  }>
                     {item.Name}
                   </p>
                 </div>
               ) : (
-                <div className=" flex flex-row  ml-10 ">
+                <div className=" flex flex-row  ml-6 ">
                   <Image src={item?.GreyIcon} width={20} preview={false} className="" />
-                  <p className={` ml-6   text-sidebarheadingcolor ${!open && "hidden"}` }>
+                  <p className={` ml-4   text-sidebarheadingcolor ${!open && "hidden"}` }>
                     {item.Name}
                   </p>
                 </div>
