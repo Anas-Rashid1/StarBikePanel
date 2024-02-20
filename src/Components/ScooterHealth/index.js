@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../Layout";
 import Scooter from "../../Assets/ScooterHealth/Scooter.png";
 import { DatePicker } from "antd";
 import { geocode, setKey, setLanguage, fromAddress } from "react-geocode";
-const ScooterHealth = ({ activeScooter }) => {
+import { useSelector } from "react-redux";
+const ScooterHealth = ({ activeScooterImei }) => {
+  const [activeScooter, setActiveScooter] = useState();
+
+  const ScooterData = useSelector((state) => state.Scooters.Scooters);
+
+  useEffect(() => {
+    const scooter = ScooterData.find(
+      (scooter) => scooter.imei === activeScooterImei
+    );
+    console.log("plzzz", scooter);
+    setActiveScooter(scooter);
+  }, [activeScooterImei, ScooterData]);
+
   const AddressFromLatLong = (lat, long) => {
     geocode("latlng", `${lat},${long}`, {
       key: process.env.REACT_APP_GOOGLE_API_KEY,

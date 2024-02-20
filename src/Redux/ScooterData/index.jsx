@@ -19,7 +19,7 @@ const ScooterData = createSlice({
       } else {
         // If no scooter with the given imei exists, create a new one
         const newScooter = {
-          imei,
+          imei: imei,
           iotbattery: null,
           scooterbattery: null,
           totalRide: null,

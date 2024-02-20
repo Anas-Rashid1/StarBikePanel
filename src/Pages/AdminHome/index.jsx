@@ -55,7 +55,7 @@ const AdminHome = () => {
               <CostAnalysisGraph />
             </div>
             <div className="flex flex-col gap-12  mt-4">
-              <ScooterHealth activeScooter={activeScooter} />
+              <ScooterHealth activeScooterImei={activeScooter} />
               <RecentJobs />
             </div>
           </div>

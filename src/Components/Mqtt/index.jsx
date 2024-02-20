@@ -66,13 +66,12 @@ const StartMqtt = () => {
     let temp = message.destinationName.split("/");
     let imei = temp[temp.length - 1];
     let { mt } = JSON.parse(message.payloadString);
+
     if (mt === 2) {
       // ,la,lo,ss,ib,sb,cy,sl
       let { la, lo, ss, ib, sb, cy, sl, pw, rf, sf } = JSON.parse(
         message.payloadString
       );
-
-      console.log("status ", sf);
 
       dispatch(
         updateOrAddScooter({
@@ -84,7 +83,7 @@ const StartMqtt = () => {
           scooterbattery: sb,
           batterycycles: cy,
           speedlimit: sl,
-          powerstusflag: "anas",
+          powerstusflag: la,
         })
       );
       console.log("Imei :", imei, "Message Type ", mt);
