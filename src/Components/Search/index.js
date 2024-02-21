@@ -1,10 +1,21 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { getFromLocalStorage } from "../../Utils";
+import Dropdown from "../Dropdown";
+import { Navigate } from "react-router-dom";
 
 
 const Search = () => {
-  const name = useSelector((state)=>state.SingnIn.adminData.username);
-  console.log(name , "username....");
+  const name = localStorage.getItem('username');
+  console.log(name , "local");
+
+  const logout = () => {
+    // Remove token from local storage
+    localStorage.clear();
+    <Navigate to="/login"/>
+
+  
+  };
   return (
     <div className="md:w-full  px-6 py-2 flex">
       <div className="flex-1">
@@ -15,8 +26,10 @@ const Search = () => {
         />
       </div>
       <div className="flex flex-row gap-2 ml-6  ">
-        <div className="w-8 h-8 bg-gray-500 rounded-full"></div>
-        <p className="mt-[5px] font-medium hidden sm:inline-block  ">Fletch Skinner</p>
+        {/* <Dropdown options={[{name:"Edit Profile" ,fun:logout() } ,
+        {name:"Logout" , fun: logout()}]}/> */}
+        {/* <div className="w-8 h-8 bg-gray-500 rounded-full"></div>  */}
+        <p className="mt-[5px] font-medium hidden sm:inline-block  ">{name}</p>
       </div>
     </div>
   );

@@ -7,10 +7,14 @@ export const SignInRequest = createAsyncThunk("admin/data", async (admin) => {
 
     const { email, pass } = admin;
 
+    console.log(email , pass , "ooooo")
+
     const { data } = await axios.post(
-      "https://dummyjson.com/auth/login",
-      { username: email, password: pass }
+      "http://localhost:4000/admin/adminlogin",
+      { email: email, password: pass }
     );
+
+    console.log(data , "login data....")
 
     return data;
   } catch (error) {
@@ -39,10 +43,10 @@ const SignInSlice = createSlice({
     request.addCase(SignInRequest.fulfilled, (state, action) => {
       const p = action.payload;
       console.log(p , "checkingg p...")
-      const { token ,username } = p;
-
+      const { token ,user } = p;
       state.adminData.token = token;
-      state.adminData.username = username;
+      state.adminData.username = user.name;
+
     });
   },
 });

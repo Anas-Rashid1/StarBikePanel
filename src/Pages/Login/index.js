@@ -4,14 +4,21 @@ import logo from "../../Assets/Logo/Logo.png";
 import { useState } from "react";
 import { useDispatch , useSelector } from "react-redux";
 import { SignInRequest } from "../../Redux/SignInslice";
+import { setToLocalStorage } from "../../Utils";
+import { Navigate, useNavigate } from "react-router-dom";
+
 
 const AdminLogin = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
  
   const dipatch = useDispatch();
 
   const authToken = useSelector((state) => state.SingnIn.adminData.token);
+  const name = useSelector((state) => state.SingnIn.adminData.username);
+ 
+  
  
   return (
     <div
@@ -39,7 +46,7 @@ const AdminLogin = () => {
               className=" py-2 px-4 bg-gray-300 text-gray-700 shadow-md shadow-slate-700 w-full rounded-[20px]"
             />
             <input
-              type="password"
+              type="text"
               placeholder="password"
               value={pass}
               onChange={(e) => {
@@ -51,11 +58,15 @@ const AdminLogin = () => {
           <button className="w-[70%] bg-sidebarheadinghoveringcolor text-black rounded-[20px] px-4 py-2 mb-12"
           onClick={() => {
             dipatch(
-              SignInRequest({ email: "kminchelle", pass: "0lelplR" })
+              SignInRequest({ email: email, pass: pass })
             );
-            localStorage.setItem('token', authToken);
+         
+           localStorage.setItem('token' , authToken);
+           localStorage.setItem('username' , name);
+           {localStorage.getItem("token")?navigate("/"):<></>};
+           
           }}>
-            {console.log(authToken , "token check...")}
+           
             
             Sign In
           </button>
