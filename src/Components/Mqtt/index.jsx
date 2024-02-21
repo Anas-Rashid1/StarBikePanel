@@ -51,11 +51,11 @@ const StartMqtt = () => {
         client.subscribe(`data/KW/scootor/${Subscribing_imei}`);
       }
 
-      // setInterval(() => {
-      //   for (let Subscribing_imei of Imei) {
-      //     client.publish(`${Subscribing_imei}`, `{"cmd":"getmt5packet"}`);
-      //   }
-      // }, 5000);
+      setInterval(() => {
+        for (let Subscribing_imei of Imei) {
+          client.publish(`${Subscribing_imei}`, `{"cmd":"getmt5packet"}`);
+        }
+      }, 5000);
     },
   });
 
@@ -90,6 +90,7 @@ const StartMqtt = () => {
       console.log("Imei :", imei, "Message Type ", mt);
     } else if (mt == 5) {
       let { totrip, totime, tocap } = JSON.parse(message.payloadString);
+      console.log("sss", mt);
 
       dispatch(
         updateOrAddScooter({

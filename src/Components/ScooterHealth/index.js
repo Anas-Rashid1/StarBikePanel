@@ -60,27 +60,23 @@ const ScooterHealth = ({ activeScooterImei }) => {
     {
       name: "Battery",
       value: activeScooter?.scooterbattery,
-      color: "green",
+      color: "purple",
     },
-
     {
       name: "Speed Limit",
       value: activeScooter?.speedlimit,
-      color: "green",
+      color: "purple",
     },
-
     {
       name: "Iot Battery",
       value: activeScooter?.iotbattery,
-      color: "green",
+      color: "purple",
     },
-
     {
       name: "Signal Strength",
       value: activeScooter?.signalstrength,
-      color: "red",
+      color: "purple",
     },
-
     {
       name: "Battery Capacity",
       value: activeScooter?.batterycapacity,
@@ -102,6 +98,7 @@ const ScooterHealth = ({ activeScooterImei }) => {
       color: "purple",
     },
   ];
+
   return (
     <div className="w-[100%] bg-white px-6 py-4 rounded-lg">
       <div className="flex flex-row justify-between">

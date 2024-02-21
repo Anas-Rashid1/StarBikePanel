@@ -143,7 +143,7 @@ const CostAnalysisGraph = () => {
         </select>
       </div>
 
-      <div className="w-[100%] mt-4 ml-3 flex justify-center ">
+      <div className=" mt-4 ml-3 flex justify-center ">
         <Line data={data} options={options} />
       </div>
     </div>

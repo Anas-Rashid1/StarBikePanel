@@ -7,16 +7,19 @@ export const SignInRequest = createAsyncThunk("admin/data", async (admin) => {
 
     const { email, pass } = admin;
 
+    console.log(email, pass, "ooooo");
+
     const { data } = await axios.post(
-      "https://dummyjson.com/auth/login",
-      { username: email, password: pass }
+      "https://star-bike-backend.vercel.app/admin/adminlogin",
+      { email: email, password: pass }
     );
+
+    console.log(data, "login data....");
 
     return data;
   } catch (error) {
     console.log("Something went Worng");
   }
- 
 });
 
 const SignInSlice = createSlice({
@@ -38,11 +41,10 @@ const SignInSlice = createSlice({
   extraReducers: (request) => {
     request.addCase(SignInRequest.fulfilled, (state, action) => {
       const p = action.payload;
-      console.log(p , "checkingg p...")
-      const { token ,username } = p;
-
+      console.log(p, "checkingg p...");
+      const { token, user } = p;
       state.adminData.token = token;
-      state.adminData.username = username;
+      state.adminData.username = user.name;
     });
   },
 });

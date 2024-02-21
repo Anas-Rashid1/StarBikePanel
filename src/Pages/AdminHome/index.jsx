@@ -33,7 +33,7 @@ const AdminHome = () => {
         <button></button>
 
         <div className="w-[100%] flex flex-col lg:flex-row xl:gap-12">
-          <div className="flex flex-col  w-full md:w-[90%]  lg:w-[70%] xl:w-[70%]  sm:w-[70%]  ">
+          <div className="flex flex-col w-full md:w-[90%]  lg:w-[70%] xl:w-[70%]  sm:w-[70%]  ">
             <PanelBox />
             <div className="flex justify-center items-center flex-col w-full lg:w-[100%] mb-4 md:mx-5 ">
               <div className=" w-[100%] md:w-full lg:w-full xl:w-full my-2">
