@@ -65,6 +65,7 @@ const StartMqtt = () => {
     // );
     let temp = message.destinationName.split("/");
     let imei = temp[temp.length - 1];
+    console.log("ye check", imei);
     let { mt } = JSON.parse(message.payloadString);
 
     if (mt === 2) {

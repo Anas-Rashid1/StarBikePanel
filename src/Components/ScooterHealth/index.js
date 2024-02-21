@@ -6,31 +6,36 @@ import { geocode, setKey, setLanguage, fromAddress } from "react-geocode";
 import { useSelector } from "react-redux";
 const ScooterHealth = ({ activeScooterImei }) => {
   const [activeScooter, setActiveScooter] = useState();
-
+  const [address, setAddress] = useState();
   const ScooterData = useSelector((state) => state.Scooters.Scooters);
 
   useEffect(() => {
+    const handleAddress = async () => {
+      let add = await AddressFromLatLong(scooter?.latitude, scooter?.longitude);
+      setAddress(add);
+    };
     const scooter = ScooterData.find(
       (scooter) => scooter.imei === activeScooterImei
     );
     console.log("plzzz", scooter);
     setActiveScooter(scooter);
+    handleAddress();
   }, [activeScooterImei, ScooterData]);
 
-  const AddressFromLatLong = (lat, long) => {
-    geocode("latlng", `${lat},${long}`, {
-      key: process.env.REACT_APP_GOOGLE_API_KEY,
-      language: "en",
-      region: "gr",
-    })
-      .then((response) => {
-        const address = response[0].formatted_address;
-        return address;
-      })
-      .catch((error) => {
-        console.error(error);
+  async function AddressFromLatLong(lat, long) {
+    try {
+      const response = await geocode("latlng", `${lat},${long}`, {
+        key: process.env.REACT_APP_GOOGLE_API_KEY,
+        language: "en",
+        region: "gr",
       });
-  };
+      const address = response.results[0]?.formatted_address;
+      return address;
+    } catch (error) {
+      console.error(error);
+      return null; // Return null or handle error appropriately
+    }
+  }
   // const newScooter = {
   //   imei: imei,
   //   iotbattery: null,
@@ -50,7 +55,7 @@ const ScooterHealth = ({ activeScooterImei }) => {
   //   ...updateValues,
   // };
 
-  console.log(activeScooter , "scooterr..")
+  console.log(activeScooter, "scooterr..");
   const ScooterHealthData = [
     {
       name: "Battery",
@@ -93,10 +98,7 @@ const ScooterHealth = ({ activeScooterImei }) => {
     },
     {
       name: "Scooter Address",
-      value: AddressFromLatLong(
-        activeScooter?.latitude,
-        activeScooter?.longitude
-      ),
+      value: address,
       color: "purple",
     },
   ];
@@ -112,26 +114,25 @@ const ScooterHealth = ({ activeScooterImei }) => {
         <img className=" w-30 object-cover" src={Scooter} />
       </div>
 
-        <hr />
-        <div className="w-full flex flex-col gap-4 mt-2">
-          {ScooterHealthData.map((item) => (
-            <div
-              className="flex flex-row justify-between items-center"
-              style={{ color: `${item.color}` }}
-            >
-              <div className="flex flex-row gap-4">
-                <div
-                  className="w-2 h-2 rounded-full mt-[10px]"
-                  style={{ backgroundColor: `${item.color}` }}
-                ></div>
-                <div className="text-black">{item.name}</div>
-              </div>
-              <div>{item.value}</div>
+      <hr />
+      <div className="w-full flex flex-col gap-4 mt-2">
+        {ScooterHealthData.map((item) => (
+          <div
+            className="flex flex-row justify-between items-center"
+            style={{ color: `${item.color}` }}
+          >
+            <div className="flex flex-row gap-4">
+              <div
+                className="w-2 h-2 rounded-full mt-[10px]"
+                style={{ backgroundColor: `${item.color}` }}
+              ></div>
+              <div className="text-black">{item.name}</div>
             </div>
-          ))}
-        </div>
+            <div>{item.value}</div>
+          </div>
+        ))}
       </div>
- 
+    </div>
   );
 };
 
