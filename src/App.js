@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import AdminHome from "./Pages/AdminHome";
-import { BrowserRouter, Route, Routes , Navigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import FeedbackPage from "./Pages/feedbackPage";
 import HelpPage from "./Pages/helpPage";
 import HistoryPage from "./Pages/historyPage";
@@ -15,14 +15,11 @@ import Layout from "./Components/Layout";
 import StartMqtt from "./Components/Mqtt";
 import { useState } from "react";
 
-
-
-
-
 function App() {
   const [activeScooter, setActiveScooter] = useState();
   const tok = localStorage.getItem("token");
   StartMqtt();
+
   return (
     <BrowserRouter>
       <Layout>
@@ -38,13 +35,15 @@ function App() {
       <Route path="/settings" element={tok?<SettingPage /> : <AdminLogin/>} />
       <Route path="/user" element={tok?<UserPage /> : <AdminLogin/>} />
 
-      <Route path="*" element={tok ? <Navigate to="/" /> : <Navigate to="/login" replace />} />
-        
+          <Route
+            path="*"
+            element={
+              tok ? <Navigate to="/" /> : <Navigate to="/login" replace />
+            }
+          />
+           <Route path="/login" element={<AdminLogin />} />
         </Routes>
       </Layout>
-      <Routes>
-      <Route path="/login" element={<AdminLogin />} />
-      </Routes>
     </BrowserRouter>
   );
 }

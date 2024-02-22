@@ -8,6 +8,7 @@ import Store from "./Redux/Store";
 import { PersistGate } from "redux-persist/integration/react";
 import { persister } from "./Redux/Store";
 import Layout from "./Components/Layout";
+import StartMqtt from "./Components/Mqtt";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -15,10 +16,7 @@ root.render(
   <React.StrictMode>
     <Provider store={Store}>
       <PersistGate loading={null} persistor={persister}>
-      
         <App />
-    
-        
       </PersistGate>
     </Provider>
   </React.StrictMode>

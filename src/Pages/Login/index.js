@@ -1,25 +1,49 @@
 import React from "react";
 import bgimg from "../../Assets/Login/loginbg.png";
 import logo from "../../Assets/Logo/Logo.png";
-import { useState } from "react";
-import { useDispatch , useSelector } from "react-redux";
-import { SignInRequest } from "../../Redux/SignInslice";
-import { setToLocalStorage } from "../../Utils";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useState  } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 
 const AdminLogin = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const [loading, setLoading] = useState(false); 
  
-  const dipatch = useDispatch();
 
-  const authToken = useSelector((state) => state.SingnIn.adminData.token);
-  const name = useSelector((state) => state.SingnIn.adminData.username);
  
+
+  const handleNavigate = (admin) => {
+    console.log(admin , "fifa");
+    localStorage.setItem("token" , admin.token);
+    localStorage.setItem("username" , admin.user.name);
+    navigate("/");
+  }
+   
   
- 
+  const handleLogin = async () => {
+    setLoading(true); 
+    try {
+      const res = await axios.post(
+        "https://star-bike-backend.vercel.app/admin/adminlogin",
+        { email: email, password: pass }
+      );
+
+      if (res.status === 200) {
+        handleNavigate(res.data);
+      } else {
+        console.log("Login failed");
+      }
+    } catch (error) {
+      console.log("Something went wrong:", error.message);
+      
+    } finally {
+      setLoading(false); 
+    }
+  };
+
   return (
     <div
       className="w-screen h-screen flex md:flex-row flex-col-reverse justify-between"
@@ -57,18 +81,12 @@ const AdminLogin = () => {
           </div>
           <button className="w-[70%] bg-sidebarheadinghoveringcolor text-black rounded-[20px] px-4 py-2 mb-12"
           onClick={() => {
-            dipatch(
-              SignInRequest({ email: email, pass: pass })
-            );
-         
-           localStorage.setItem('token' , authToken);
-           localStorage.setItem('username' , name);
-           {localStorage.getItem("token")?navigate("/"):<></>};
-           
-          }}>
+            handleLogin();
+            }}
+            disabled={loading}>
            
             
-            Sign In
+           {loading ? "Loading..." : "Sign In"}
           </button>
         </div>
       </div>

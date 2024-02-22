@@ -43,22 +43,16 @@ const General = [
     path:"/scooter",
   },
   { id: 3, Name: "User", GreyIcon: greyIcon_users, ColorIcon: colorIcon_users , path:"/user" },
+ 
   {
     id: 4,
-    Name: "Location",
-    GreyIcon: greyIcon_location,
-    ColorIcon: colorIcon_location,
-    path:"/location",
-  },
-  {
-    id: 5,
     Name: "Reports",
     GreyIcon: greyIcon_reports,
     ColorIcon: colorIcon_reports,
     path:"/report",
   },
   {
-    id: 6,
+    id: 5,
     Name: "History",
     GreyIcon: greyIcon_history,
     ColorIcon: colorIcon_history,
@@ -67,7 +61,7 @@ const General = [
 ];
 
 const Account = [
-  { id: 7, Name: "Log out", GreyIcon: greyIcon_help, ColorIcon: colorIcon_help },
+  { id: 6, Name: "Log out", GreyIcon: greyIcon_help, ColorIcon: colorIcon_help },
 
 ];
 
@@ -76,13 +70,15 @@ const SideBar = () => {
   const [selectedItem, setSelectedItem] = useState();
   const [open, setOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 500);
+  const [loggingOut , setLoggingOut] = useState(false);
 
   const logout = () => {
-    // Remove token from local storage
-    localStorage.clear();
-    console.log("Hello World");
-
-  
+    setLoggingOut(true); 
+    setTimeout(() => {
+      localStorage.clear();
+      console.log("Hello World");
+      setLoggingOut(false); 
+    }, 2000);
   };
 
   const reloadOnResize = () => {
@@ -208,7 +204,7 @@ const SideBar = () => {
                 <div className=" flex  ml-6">
                   <Image src={item?.ColorIcon} width={20} preview={false} className="" />
                   <p className={ `ml-4   text-sidebarheadinghoveringcolor  ${!open && "hidden"}`  }>
-                    {item.Name}
+                  {item.Name}
                   </p>
                 </div>
               ) : (

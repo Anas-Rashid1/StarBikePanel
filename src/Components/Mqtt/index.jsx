@@ -40,6 +40,12 @@ const StartMqtt = () => {
 
   // Connect to the MQTT broker
 
+  // setInterval(() => {
+  //   for (let Subscribing_imei of Imei) {
+  //     client.publish(`${Subscribing_imei}`, `{"cmd":"getmt5packet"}`);
+  //   }
+  // }, 5000);
+
   client.connect({
     onSuccess: () => {
       console.log("Connected to MQTT broker");
@@ -50,21 +56,19 @@ const StartMqtt = () => {
       for (let Subscribing_imei of Imei) {
         client.subscribe(`data/KW/scootor/${Subscribing_imei}`);
       }
-
-      // setInterval(() => {
-      //   for (let Subscribing_imei of Imei) {
-      //     client.publish(`${Subscribing_imei}`, `{"cmd":"getmt5packet"}`);
-      //   }
-      // }, 5000);
     },
   });
 
   client.onMessageArrived = (message) => {
+    for (let Subscribing_imei of Imei) {
+      client.publish(`${Subscribing_imei}`, `{"cmd":"getmt5packet"}`);
+    }
     // console.log(
     //   `Message received from topic ${message.destinationName}: ${message.payloadString}`
     // );
     let temp = message.destinationName.split("/");
     let imei = temp[temp.length - 1];
+    console.log("ye check", imei);
     let { mt } = JSON.parse(message.payloadString);
 
     if (mt === 2) {
@@ -89,6 +93,7 @@ const StartMqtt = () => {
       console.log("Imei :", imei, "Message Type ", mt);
     } else if (mt == 5) {
       let { totrip, totime, tocap } = JSON.parse(message.payloadString);
+      console.log("sss", mt);
 
       dispatch(
         updateOrAddScooter({
