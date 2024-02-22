@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
+.react-google-maps-marker {
+  transition: all 3s ease-in; /* Add smooth transition */
+}

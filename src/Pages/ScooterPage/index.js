@@ -15,7 +15,7 @@ const ScooterPage = ({ setActiveScooter }) => {
   const [ScootersData, SetScooterData] = useState(
     useSelector((state) => state.Scooters.Scooters)
   );
-  console.log("plzzz", ScootersData);
+
   const AddressFromLatLong = (lat, long) => {
     console.log(lat, long, "this is lat long");
     geocode("latlng", `${lat},${long}`, {

@@ -24,7 +24,10 @@ const MapComponent = ({ setActiveScooter }) => {
         <h1>Loading...</h1>
       ) : (
         <GoogleMap
-          mapContainerStyle={{ width: "50vw", height: "350px" }}
+          mapContainerStyle={{
+            width: "50vw",
+            height: "350px",
+          }}
           center={center}
           options={{ disableDefaultUI: true }}
           zoom={10}

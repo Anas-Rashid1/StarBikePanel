@@ -73,9 +73,10 @@ const StartMqtt = () => {
 
     if (mt === 2) {
       // ,la,lo,ss,ib,sb,cy,sl
-      let { la, lo, ss, ib, sb, cy, sl, pw, rf, sf } = JSON.parse(
+      let { la, lo, ss, ib, sb, cy, sl, pw, rf, sf, io } = JSON.parse(
         message.payloadString
       );
+      console.log("sss", mt);
 
       dispatch(
         updateOrAddScooter({
@@ -87,7 +88,7 @@ const StartMqtt = () => {
           scooterbattery: sb,
           batterycycles: cy,
           speedlimit: sl,
-          powerstusflag: la,
+          powerstusflag: pw,
         })
       );
       console.log("Imei :", imei, "Message Type ", mt);
@@ -103,9 +104,7 @@ const StartMqtt = () => {
           batterycapacity: `${tocap} mAh`,
         })
       );
-      console.log("Imei :", imei, "Message Type 445 ", mt);
     }
-    console.log("yele :", ScooterData);
   };
 
   // Return the MQTT client instance

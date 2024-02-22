@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const ScooterLed = createSlice({
+export const ScooterLed = createSlice({
   name: "ScooterLed",
   initialState: {
     ScootersLed: [],
