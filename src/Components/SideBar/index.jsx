@@ -67,15 +67,8 @@ const General = [
 ];
 
 const Account = [
-  { id: 7, Name: "Help", GreyIcon: greyIcon_help, ColorIcon: colorIcon_help },
+  { id: 7, Name: "Log out", GreyIcon: greyIcon_help, ColorIcon: colorIcon_help },
 
-  {
-    id: 8,
-    Name: "Setting",
-    GreyIcon: greyIcon_settings,
-    ColorIcon: colorIcon_settings,
-   
-  },
 ];
 
 const SideBar = () => {
@@ -83,6 +76,14 @@ const SideBar = () => {
   const [selectedItem, setSelectedItem] = useState();
   const [open, setOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 500);
+
+  const logout = () => {
+    // Remove token from local storage
+    localStorage.clear();
+    console.log("Hello World");
+
+  
+  };
 
   const reloadOnResize = () => {
     window.location.reload();
@@ -194,6 +195,7 @@ const SideBar = () => {
               className=" text-sidebarheadingcolor pt-1  hover:text-sidebarheadinghoveringcolor cursor-pointer"
               onClick={() => {
                 setSelectedItem(item?.id);
+                logout();
               }}
             >
               <div class="box h-4 w-8">

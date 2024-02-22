@@ -27,7 +27,7 @@ function App() {
     <BrowserRouter>
       <Layout>
         <Routes>
-          <Route path="/login" element={<AdminLogin />} />
+          
           <Route path="/" element={tok?<AdminHome/> : <AdminLogin/>}/>
           <Route path="/feedback" element={tok?<FeedbackPage /> : <AdminLogin/>} />
       <Route path="/help" element={tok?<HelpPage />: <AdminLogin/>} />
@@ -42,6 +42,9 @@ function App() {
         
         </Routes>
       </Layout>
+      <Routes>
+      <Route path="/login" element={<AdminLogin />} />
+      </Routes>
     </BrowserRouter>
   );
 }

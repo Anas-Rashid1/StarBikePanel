@@ -92,7 +92,7 @@ const ScooterPage = ({ setActiveScooter }) => {
                   SIGNAL STRENGTH
                 </th>
                 <th scope="col" class="lg:px-6 md:px-4 px-4 py-3 ">
-                  STATUS
+                  IoT LED
                 </th>
               </tr>
             </thead>
