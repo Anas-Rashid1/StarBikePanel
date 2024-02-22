@@ -10,7 +10,9 @@ const ToggleButton = () => {
   return (
     <div className="flex items-center">
       <button
-        className={`relative w-12 h-6 ${isActive ? 'bg-green-400' : 'bg-gray-400'} rounded-full focus:outline-none`}
+        className={`relative w-12 h-6 ${
+          isActive ? "bg-green-800" : "bg-gray-400"
+        } rounded-full focus:outline-none`}
         onClick={toggleButton}
       >
         <span

@@ -3,54 +3,54 @@ import Layout from "../Layout";
 import Scooter from "../../Assets/ScooterHealth/Scooter.png";
 import { DatePicker } from "antd";
 import { geocode, setKey, setLanguage, fromAddress } from "react-geocode";
+import { useSelector } from "react-redux";
+const ScooterHealth = ({ activeScooterImei }) => {
+  const [activeScooter, setActiveScooter] = useState();
 
-const ScooterHealth = ({ activeScooter }) => {
-  const [scooterHealthData, setScooterHealthData] = useState([]);
-
-  const calculateColor = (value) => {
-    if (value < 25) {
-      return "red";
-    } else if (value < 50) {
-      return "yellow";
-    } else {
-      return "green";
-    }
-  };
+  const ScooterData = useSelector((state) => state.Scooters.Scooters);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const updatedScooterHealthData = await Promise.all(
-        ScooterHealthData.map(async (item) => {
-          if (item.name === "Scooter Address") {
-            return {
-              ...item,
-              value: await AddressFromLatLong(activeScooter?.latitude, activeScooter?.longitude),
-            };
-          } else {
-            return item;
-          }
-        })
-      );
-      setScooterHealthData(updatedScooterHealthData);
-    };
-    fetchData();
-  }, [activeScooter]);
+    const scooter = ScooterData.find(
+      (scooter) => scooter.imei === activeScooterImei
+    );
+    console.log("plzzz", scooter);
+    setActiveScooter(scooter);
+  }, [activeScooterImei, ScooterData]);
 
-  const AddressFromLatLong = async (lat, long) => {
-    try {
-      const response = await geocode("latlng", `${lat},${long}`, {
-        key: process.env.REACT_APP_GOOGLE_API_KEY,
-        language: "en",
-        region: "gr",
+  const AddressFromLatLong = (lat, long) => {
+    geocode("latlng", `${lat},${long}`, {
+      key: process.env.REACT_APP_GOOGLE_API_KEY,
+      language: "en",
+      region: "gr",
+    })
+      .then((response) => {
+        const address = response[0].formatted_address;
+        return address;
+      })
+      .catch((error) => {
+        console.error(error);
       });
-      const address = response.results[0]?.formatted_address;
-      return address;
-    } catch (error) {
-      console.error(error);
-      return null; // Return null or handle error appropriately
-    }
   };
+  // const newScooter = {
+  //   imei: imei,
+  //   iotbattery: null,
+  //   scooterbattery: null,
+  //   totalRide: null,
+  //   batterycycles: null,
+  //   powerstusflag: null,
+  //   speedlimit: null,
+  //   latitude: null,
+  //   longitude: null,
+  //   signalstrength: null,
+  //   riderName: "",
+  //   riderContact: null,
+  //   totaltrips: null,
+  //   totaltime: null,
+  //   batterycapacity: null,
+  //   ...updateValues,
+  // };
 
+  console.log(activeScooter , "scooterr..")
   const ScooterHealthData = [
     {
       name: "Battery",
@@ -99,16 +99,16 @@ const ScooterHealth = ({ activeScooter }) => {
       </div>
       <hr />
       <div className="w-full flex flex-col gap-4 mt-2">
-        {scooterHealthData.map((item, index) => (
+        {ScooterHealthData.map((item, index) => (
           <div
             key={index}
             className="flex flex-row justify-between items-center"
-            style={{ color: calculateColor(item.value) }}
+            // style={{ color: calculateColor(item.value) }}
           >
             <div className="flex flex-row gap-4">
               <div
                 className="w-2 h-2 rounded-full mt-[10px]"
-                style={{ backgroundColor: calculateColor(item.value) }}
+                // style={{ backgroundColor: calculateColor(item.value) }}
               ></div>
               <div className="text-black">{item.name}</div>
             </div>

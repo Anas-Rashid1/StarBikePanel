@@ -5,6 +5,7 @@ import SearchBar from "../searchbar";
 import { useMemo } from "react";
 import { GoogleMap, useJsApiLoader, MarkerF } from "@react-google-maps/api";
 import { useSelector } from "react-redux";
+import { animated, useSpring } from "react-spring";
 
 // Fix for
 const MapComponent = ({ setActiveScooter }) => {
@@ -36,7 +37,7 @@ const MapComponent = ({ setActiveScooter }) => {
                 <MarkerF
                   key={scooter.imei}
                   position={{ lat: scooter?.latitude, lng: scooter?.longitude }}
-                  onClick={() => setActiveScooter(scooter)}
+                  onClick={() => setActiveScooter(scooter.imei)}
                 />
               </div>
             );

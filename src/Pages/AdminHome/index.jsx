@@ -28,12 +28,9 @@ const AdminHome = () => {
 
   return (
     <>
-   
-        <div className=" h-screen overflow-x-hidden bg-gray-100 relative">
-          <Search />
-          <button
-            
-          ></button>
+      <div className=" h-screen overflow-x-hidden bg-gray-100 relative">
+        <Search />
+        <button></button>
 
           <div className="w-[100%] flex flex-col lg:flex-row xl:gap-12">
             <div className="flex flex-col w-full md:w-[90%]  lg:w-[70%] xl:w-[70%]  sm:w-[70%]  ">
@@ -43,22 +40,21 @@ const AdminHome = () => {
                   <SearchBar />
                 </div>
 
-                <MapComponent
-                  setActiveScooter={setActiveScooter}
-                  activeScooter={activeScooter}
-                />
-              </div>
-              <div className="md:mx-5 w-full lg:w-[97%]">
-              <CostAnalysisGraph />
-              </div>
+              <MapComponent
+                setActiveScooter={setActiveScooter}
+                activeScooter={activeScooter}
+              />
             </div>
-            <div className="flex flex-col md:w-[90%]  gap-12 md:mx-5  mt-4">
-              <ScooterHealth activeScooter={activeScooter} />
-              <RecentJobs />
+            <div className="md:mx-5 w-full lg:w-[97%]">
+              <CostAnalysisGraph />
             </div>
           </div>
+          <div className="flex flex-col md:w-[90%]  gap-12 md:mx-5  mt-4">
+            <ScooterHealth activeScooterImei={activeScooter} />
+            <RecentJobs />
+          </div>
         </div>
-   
+      </div>
     </>
   );
 };
