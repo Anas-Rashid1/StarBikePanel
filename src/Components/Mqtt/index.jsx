@@ -40,6 +40,12 @@ const StartMqtt = () => {
 
   // Connect to the MQTT broker
 
+  // setInterval(() => {
+  //   for (let Subscribing_imei of Imei) {
+  //     client.publish(`${Subscribing_imei}`, `{"cmd":"getmt5packet"}`);
+  //   }
+  // }, 5000);
+
   client.connect({
     onSuccess: () => {
       console.log("Connected to MQTT broker");
@@ -50,16 +56,13 @@ const StartMqtt = () => {
       for (let Subscribing_imei of Imei) {
         client.subscribe(`data/KW/scootor/${Subscribing_imei}`);
       }
-
-      setInterval(() => {
-        for (let Subscribing_imei of Imei) {
-          client.publish(`${Subscribing_imei}`, `{"cmd":"getmt5packet"}`);
-        }
-      }, 5000);
     },
   });
 
   client.onMessageArrived = (message) => {
+    for (let Subscribing_imei of Imei) {
+      client.publish(`${Subscribing_imei}`, `{"cmd":"getmt5packet"}`);
+    }
     // console.log(
     //   `Message received from topic ${message.destinationName}: ${message.payloadString}`
     // );
