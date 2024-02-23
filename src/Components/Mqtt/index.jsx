@@ -73,7 +73,7 @@ const StartMqtt = () => {
 
     if (mt === 2) {
       // ,la,lo,ss,ib,sb,cy,sl
-      let { la, lo, ss, ib, sb, cy, sl, pw, rf, sf, io } = JSON.parse(
+      let { la, lo, ss, ib, sb, cy, sl, pw, rf, sf, io, ws } = JSON.parse(
         message.payloadString
       );
       console.log("sss", mt);
@@ -84,11 +84,11 @@ const StartMqtt = () => {
           latitude: la,
           longitude: lo,
           signalstrength: ss,
-          iotbattery: ib,
-          scooterbattery: sb,
+          iotbattery: `${ib} %`,
+          scooterbattery: `${sb} %`,
           batterycycles: cy,
-          speedlimit: sl,
-          powerstusflag: pw,
+          speedlimit: `${sl} kph`,
+          wheelspeed: `${ws} kph`,
         })
       );
       console.log("Imei :", imei, "Message Type ", mt);

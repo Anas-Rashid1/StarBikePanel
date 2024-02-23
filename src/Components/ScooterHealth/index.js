@@ -98,8 +98,8 @@ const ScooterHealth = ({ activeScooterImei }) => {
       color: "purple",
     },
     {
-      name: "flag",
-      value: activeScooter?.powerstusflag,
+      name: "Wheel Speed",
+      value: activeScooter?.wheelspeed,
       color: "purple",
     },
     {

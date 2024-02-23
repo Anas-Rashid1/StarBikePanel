@@ -12,9 +12,7 @@ import ToggleButton from "../../Components/togglebutton";
 import Signalstrength from "../../Components/SignalStrength";
 
 const ScooterPage = ({ setActiveScooter }) => {
-  const [ScootersData, SetScooterData] = useState(
-    useSelector((state) => state.Scooters.Scooters)
-  );
+  const ScootersData = useSelector((state) => state.Scooters.Scooters);
 
   const AddressFromLatLong = (lat, long) => {
     console.log(lat, long, "this is lat long");
@@ -33,43 +31,43 @@ const ScooterPage = ({ setActiveScooter }) => {
       });
   };
 
-  const ScooterData = [
-    {
-      serial: "#1423984567",
-      battery: 30,
-      location: "loremipsum",
-      review: 4.5,
-      status: "start",
-    },
-    {
-      serial: "#1423984567",
-      battery: 80,
-      location: "loremipsum",
-      review: 4.5,
-      status: "start",
-    },
-    {
-      serial: "#1423984567",
-      battery: 50,
-      location: "loremipsum",
-      review: 4.5,
-      status: "start",
-    },
-    {
-      serial: "#1423984567",
-      battery: 100,
-      location: "loremipsum",
-      review: 4.5,
-      status: "start",
-    },
-    {
-      serial: "#1423984567",
-      battery: 15,
-      location: "loremipsum",
-      review: 4.5,
-      status: "start",
-    },
-  ];
+  // const ScooterData = [
+  //   {
+  //     serial: "#1423984567",
+  //     battery: 30,
+  //     location: "loremipsum",
+  //     review: 4.5,
+  //     status: "start",
+  //   },
+  //   {
+  //     serial: "#1423984567",
+  //     battery: 80,
+  //     location: "loremipsum",
+  //     review: 4.5,
+  //     status: "start",
+  //   },
+  //   {
+  //     serial: "#1423984567",
+  //     battery: 50,
+  //     location: "loremipsum",
+  //     review: 4.5,
+  //     status: "start",
+  //   },
+  //   {
+  //     serial: "#1423984567",
+  //     battery: 100,
+  //     location: "loremipsum",
+  //     review: 4.5,
+  //     status: "start",
+  //   },
+  //   {
+  //     serial: "#1423984567",
+  //     battery: 15,
+  //     location: "loremipsum",
+  //     review: 4.5,
+  //     status: "start",
+  //   },
+  // ];
   return (
     <div className="relative h-screen overflow-x-hidden w-full bg-gray-100 px-2 md:px-6">
       <Search />
@@ -133,7 +131,7 @@ const ScooterPage = ({ setActiveScooter }) => {
                         : "text-sidebarheadinghoveringcolor"
                     }`}
                   >
-                    <ToggleButton />
+                    <ToggleButton imei={item?.imei} />
                   </td>
                 </tr>
               ))}
