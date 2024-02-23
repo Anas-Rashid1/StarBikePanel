@@ -75,7 +75,8 @@ const SideBar = () => {
   const logout = () => {
     setLoggingOut(true); 
     setTimeout(() => {
-      localStorage.clear();
+      localStorage.removeItem("token");
+      localStorage.removeItem("username");
       console.log("Hello World");
       setLoggingOut(false); 
     }, 2000);
@@ -122,7 +123,7 @@ const SideBar = () => {
     <div className={`${open ? "w-56" : "w-20"} ${open ? "pl-4" : "pl-2"}   bg-white h-auto duration-300 sticky overflow-y-auto `}>
         
     
-     
+     {console.log(selectedItem , "abc")}
       <div className="bg-white flex flex-col justify-center items-center gap-4">
 
         <Image src={logo} width={55} preview={false} />
@@ -149,12 +150,12 @@ const SideBar = () => {
               }}
             >
               <div class="box h-4 w-8">
-                {item?.id === selectedItem && (
+                {((selectedItem == undefined && item?.id === 1) || item?.id === selectedItem) && (
                   <div className="rectangle bg-sidebarheadinghoveringcolor rounded-r-full h-12 w-2 translate-y-1"></div>
                 )}
               </div>
 
-              {item?.id == selectedItem ? (
+              {((selectedItem == undefined && item?.id === 1) || item?.id === selectedItem) ? (
               
                 <div className=" flex flex-row mb-2 ml-6">
                   {   console.log(selectedItem , "selecteditem...")}
@@ -195,12 +196,12 @@ const SideBar = () => {
               }}
             >
               <div class="box h-4 w-8">
-                {item?.id === selectedItem && (
+                {((selectedItem == undefined && item?.id === 1) || item?.id === selectedItem) && (
                   <div className="rectangle bg-sidebarheadinghoveringcolor rounded-r-full h-12 w-2 translate-y-1"></div>
                 )}
               </div>
 
-              {item?.id === selectedItem ? (
+              {((selectedItem == undefined && item?.id === 1) || item?.id === selectedItem) ? (
                 <div className=" flex  ml-6">
                   <Image src={item?.ColorIcon} width={20} preview={false} className="" />
                   <p className={ `ml-4   text-sidebarheadinghoveringcolor  ${!open && "hidden"}`  }>

@@ -133,7 +133,7 @@ const ScooterPage = ({ setActiveScooter }) => {
                         : "text-sidebarheadinghoveringcolor"
                     }`}
                   >
-                    <ToggleButton />
+                    <ToggleButton imei={item?.imei} />
                   </td>
                 </tr>
               ))}
