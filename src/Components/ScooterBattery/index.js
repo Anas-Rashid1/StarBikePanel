@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 
 const ScooterBattery = ({ batteryPercentage }) => {
   console.log(batteryPercentage, "batteryPercentage");
+
   const numberOfBars = 5; // Change the number of bars as needed
   const [filledBars, setFilledBars] = useState(0);
 
   useEffect(() => {
-    setFilledBars(Math.ceil((batteryPercentage / 100) * numberOfBars));
+    setFilledBars(
+      Math.ceil((parseInt(batteryPercentage) / 100) * numberOfBars)
+    );
   }, [batteryPercentage]);
 
   console.log(filledBars, "checking...");

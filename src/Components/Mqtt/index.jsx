@@ -63,20 +63,23 @@ const StartMqtt = () => {
     for (let Subscribing_imei of Imei) {
       client.publish(`${Subscribing_imei}`, `{"cmd":"getmt5packet"}`);
     }
+
     // console.log(
     //   `Message received from topic ${message.destinationName}: ${message.payloadString}`
     // );
     let temp = message.destinationName.split("/");
     let imei = temp[temp.length - 1];
-    console.log("ye check", imei);
-    let { mt } = JSON.parse(message.payloadString);
+    // console.log("ye check", imei);
+    let { mt, ss, lo, la, td, tt } = JSON.parse(message.payloadString);
+
+    console.log("ye check", imei, la, lo, td, tt);
 
     if (mt === 2) {
       // ,la,lo,ss,ib,sb,cy,sl
-      let { la, lo, ss, ib, sb, cy, sl, pw, rf, sf, io, ws } = JSON.parse(
+      let { la, lo, ss, ib, sb, cy, sl, pw, rf, sf, io, ws, td } = JSON.parse(
         message.payloadString
       );
-      console.log("sss", mt);
+      console.log("sss", imei, mt, la, lo);
 
       dispatch(
         updateOrAddScooter({
@@ -94,7 +97,7 @@ const StartMqtt = () => {
       console.log("Imei :", imei, "Message Type ", mt);
     } else if (mt == 5) {
       let { totrip, totime, tocap } = JSON.parse(message.payloadString);
-      console.log("sss", mt);
+      // console.log("sss", mt);/
 
       dispatch(
         updateOrAddScooter({
