@@ -74,12 +74,12 @@ const SideBar = () => {
 
   const logout = () => {
     setLoggingOut(true); 
-    setTimeout(() => {
+
       localStorage.removeItem("token");
       localStorage.removeItem("username");
       console.log("Hello World");
       setLoggingOut(false); 
-    }, 2000);
+   
   };
 
   const reloadOnResize = () => {
@@ -205,7 +205,7 @@ const SideBar = () => {
                 <div className=" flex  ml-6">
                   <Image src={item?.ColorIcon} width={20} preview={false} className="" />
                   <p className={ `ml-4   text-sidebarheadinghoveringcolor  ${!open && "hidden"}`  }>
-                  {item.Name}
+                  {loggingOut? "logging out..." :  item.Name}
                   </p>
                 </div>
               ) : (

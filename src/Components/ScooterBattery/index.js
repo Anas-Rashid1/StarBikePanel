@@ -9,7 +9,7 @@ const ScooterBattery = ({ batteryPercentage }) => {
     setFilledBars(Math.ceil((batteryPercentage / 100) * numberOfBars));
   }, [batteryPercentage]);
 
-  console.log(filledBars, "checking...");
+  console.log(filledBars, "filled");
 
   return (
     <div className=" flex flex-row gap-[3px] ">

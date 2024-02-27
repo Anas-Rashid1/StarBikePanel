@@ -1,4 +1,5 @@
 import React from 'react'
+import { motion } from 'framer-motion';
 import Layout from "../../Components/Layout";
 import Search from '../../Components/Search';
 import { green } from '@mui/material/colors';
@@ -39,7 +40,7 @@ const UserPage = () => {
   return (
   
     
-       <div className="relative md:w-full h-screen overflow-x-hidden bg-gray-100 px-2">
+       <motion.div initial={{scaleY:0}} animate={{scaleY:1}} exit={{scaleY:0}} className="relative md:w-full h-screen overflow-x-hidden bg-gray-100 px-2">
       <Search/>
      
       <div className=" bg-white px-2 pt-4 justify-center items-center mt-10 w-full  h-auto">
@@ -100,7 +101,7 @@ const UserPage = () => {
 
          
       
-       </div>
+       </motion.div>
       
       
     

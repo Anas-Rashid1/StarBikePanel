@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import Layout from "../../Components/Layout";
 import Search from "../../Components/Search";
@@ -13,23 +14,22 @@ import Signalstrength from "../../Components/SignalStrength";
 
 const ScooterPage = ({ setActiveScooter }) => {
   const ScootersData = useSelector((state) => state.Scooters.Scooters);
+  console.log(ScootersData , "aaa");
 
-  const AddressFromLatLong = (lat, long) => {
-    console.log(lat, long, "this is lat long");
-    geocode("latlng", `${lat},${long}`, {
-      key: process.env.REACT_APP_GOOGLE_API_KEY,
-      language: "en",
-      region: "gr",
-    })
-      .then((response) => {
-        const address = response[0].formatted_address;
-        // console.log(address, " this is address");
-        return address;
-      })
-      .catch((error) => {
-        console.error(error);
+  async function AddressFromLatLong(lat, long) {
+    try {
+      const response = await geocode("latlng", `${lat},${long}`, {
+        key: process.env.REACT_APP_GOOGLE_API_KEY,
+        language: "en",
+        region: "gr",
       });
-  };
+      const address = response.results[0]?.formatted_address;
+      return address;
+    } catch (error) {
+      console.error(error);
+      return null; // Return null or handle error appropriately
+    }
+  }
 
   // const ScooterData = [
   //   {
@@ -69,7 +69,7 @@ const ScooterPage = ({ setActiveScooter }) => {
   //   },
   // ];
   return (
-    <div className="relative h-screen overflow-x-hidden w-full bg-gray-100 px-2 md:px-6">
+    <motion.div initial={{scaleY:0}} animate={{scaleY:1}} exit={{scaleY:0}} className="relative h-screen overflow-x-hidden w-full bg-gray-100 px-2 md:px-6">
       <Search />
 
       <div className=" bg-white px-2 pt-4 justify-center items-center mt-10 w-full  h-auto">
@@ -85,6 +85,9 @@ const ScooterPage = ({ setActiveScooter }) => {
                 </th>
                 <th scope="col" class="lg:px-6 md:px-4 px-4 py-3">
                   LOCATION
+                </th>
+                <th scope="col" class="lg:px-6 md:px-4 px-4 py-3">
+                  IoT BATTERY
                 </th>
                 <th scope="col" class="lg:px-6 md:px-4 px-4 py-3">
                   SIGNAL STRENGTH
@@ -105,17 +108,28 @@ const ScooterPage = ({ setActiveScooter }) => {
                   </th>
                   <td class="lg:px-6 md:px-4 px-4 py-4">
                     {console.log("rajja")}
+                   
                     <ScooterBattery
                       batteryPercentage={
-                        item?.scooterbattery === undefined
-                          ? 5
-                          : item?.scooterbattery
+                        parseInt(item?.scooterbattery)
+                        //  === undefined
+                        //   ? 5
+                        //   : item?.scooterbattery
                       }
                     />
                   </td>
                   <td class="lg:px-6 md:px-4 px-4 py-4">
                     <a href="">
-                      {AddressFromLatLong(item?.latitude, item?.longitude)}
+                      {/* {AddressFromLatLong(item?.latitude, item?.longitude)} */}
+                    </a>
+                  </td>
+                  <td class="lg:px-6 md:px-4 px-4 py-4">
+                    <a href="">
+                      <ScooterBattery batteryPercentage={
+                       parseInt(item?.iotbattery)
+                        
+                      }/>
+                  
                     </a>
                   </td>
                   <td class="lg:px-6 md:px-4 px-4 py-4 flex flex-row gap-2">
@@ -139,7 +153,7 @@ const ScooterPage = ({ setActiveScooter }) => {
           </table>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
