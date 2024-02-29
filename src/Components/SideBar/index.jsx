@@ -23,6 +23,8 @@ import colorIcon_scooter from "../../Assets/SideBarColorfulIcons/Scooters.png";
 import colorIcon_users from "../../Assets/SideBarColorfulIcons/Users.png";
 import colorIcon_settings from "../../Assets/SideBarColorfulIcons/Settings.png";
 
+import Loader from "../Loader/loader";
+
 
 
 

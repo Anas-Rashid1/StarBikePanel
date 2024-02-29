@@ -15,44 +15,52 @@ import Layout from "./Components/Layout";
 import StartMqtt from "./Components/Mqtt";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
+import Loader from "./Components/Loader/loader";
 
 function App() {
   const [activeScooter, setActiveScooter] = useState();
+  const [isLoading, setLoading] = useState(true); 
   const tok = localStorage.getItem("token");
   StartMqtt();
+
+  setTimeout(() => {
+    setLoading(false);
+  }, 2000);
 
   return (
     <AnimatePresence >
     <BrowserRouter>
-   
-  
-      {tok ? (<Layout>
-        <Routes>
-          
-           <Route path="/" element={<AdminHome/>}/> 
-          <Route path="/feedback" element={<FeedbackPage /> } />
-      <Route path="/help" element={<HelpPage />} />
-      <Route path="/history" element={<HistoryPage />} />
-      <Route path="/location" element={<LocationPage />} />
-      <Route path="/report" element={<ReportPage />} />
-      <Route path="/scooter" element={<ScooterPage />} />
-      <Route path="/settings" element={<SettingPage />} />
-      <Route path="/user" element={<UserPage />} />
+   {isLoading? <Loader/> : (
+     tok ? (<Layout>
+      <Routes>
+        
+         <Route path="/" element={<AdminHome/>}/> 
+        <Route path="/feedback" element={<FeedbackPage /> } />
+    <Route path="/help" element={<HelpPage />} />
+    <Route path="/history" element={<HistoryPage />} />
+    <Route path="/location" element={<LocationPage />} />
+    <Route path="/report" element={<ReportPage />} />
+    <Route path="/scooter" element={<ScooterPage />} />
+    <Route path="/settings" element={<SettingPage />} />
+    <Route path="/user" element={<UserPage />} />
 
-          {/* <Route
-            path="*"
-            element={
-              tok ? <Navigate to="/" /> : <Navigate to="/login" replace />
-            }
-          /> */}
-           {/* <Route path="/login" element={<AdminLogin />} /> */}
-        </Routes>
-      </Layout>)
-      :
-     ( <Routes>
-      <Route index path="/" element={<AdminLogin />} /> 
-      
-      </Routes>)}
+        {/* <Route
+          path="*"
+          element={
+            tok ? <Navigate to="/" /> : <Navigate to="/login" replace />
+          }
+        /> */}
+         {/* <Route path="/login" element={<AdminLogin />} /> */}
+      </Routes>
+    </Layout>)
+    :
+   ( <Routes>
+    <Route index path="/" element={<AdminLogin />} /> 
+    
+    </Routes>)
+   )}
+  
+     
     
 
     </BrowserRouter>
