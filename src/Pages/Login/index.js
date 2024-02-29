@@ -1,25 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import bgimg from "../../Assets/Login/loginbg.png";
 import logo from "../../Assets/Logo/Logo.png";
-import { useState  } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import Loader from "../../Components/Loader/loader";
 
 const AdminLogin = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
-  const [loading, setLoading] = useState(false); 
- 
+  const [loading, setLoading] = useState(false);
 
- 
-
- 
-   
-  
   const handleLogin = async () => {
-    setLoading(true); 
+    setLoading(true);
     try {
       const res = await axios.post(
         "https://star-bike-backend.vercel.app/admin/adminlogin",
@@ -28,23 +21,23 @@ const AdminLogin = () => {
 
       if (res.status === 200) {
         navigate("/");
-        localStorage.setItem("token" , res.data.token);
-        localStorage.setItem("username" , res.data.user.name);
-      
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("username", res.data.user.name);
       } else {
         console.log("Login failed");
       }
     } catch (error) {
       console.log("Something went wrong:", error.message);
-      
     } finally {
-      setLoading(false); 
+      setTimeout(() => {
+        setLoading(false);
+      }, 5000);
     }
   };
 
   return (
     <div
-      className="w-screen h-screen flex md:flex-row flex-col-reverse justify-between"
+      className={`w-screen h-screen flex md:flex-row flex-col-reverse justify-between relative`}
       style={{
         backgroundImage: `url(${bgimg})`,
         backgroundRepeat: "no-repeat",
@@ -52,6 +45,7 @@ const AdminLogin = () => {
         backgroundPosition: "center",
       }}
     >
+      {loading && <Loader />} {/* Render Loader conditionally */}
       <div className="lg:w-[50%] md:w-[65%] w-[100%] h-full flex flex-row  items-center justify-center">
         <div className="bg-white  xl:w-[65%] lg:w-[80%] md:w-[80%] w-[80%] rounded-tr-[20px] rounded-bl-[20px] flex flex-col gap-12 items-center justify-center sm:p-12 p-4 shadow-lg shadow-slate-700">
           <h1 className="sm:text-2xl text-xl mt-12 font-bold font-serif text-center">
@@ -68,7 +62,7 @@ const AdminLogin = () => {
               className=" py-2 px-4 bg-gray-300 text-gray-700 shadow-md shadow-slate-700 w-full rounded-[20px]"
             />
             <input
-              type="text"
+              type="password"
               placeholder="password"
               value={pass}
               onChange={(e) => {
@@ -77,19 +71,18 @@ const AdminLogin = () => {
               className=" py-2 px-4 bg-gray-300 text-gray-700 shadow-md shadow-slate-700 w-full rounded-[20px]"
             />
           </div>
-          <button className="w-[70%] bg-sidebarheadinghoveringcolor text-black rounded-[20px] px-4 py-2 mb-12"
-          onClick={() => {
-            handleLogin();
+          <button
+            className="w-[70%] bg-sidebarheadinghoveringcolor text-black rounded-[20px] px-4 py-2 mb-12"
+            onClick={() => {
+              handleLogin();
             }}
-            disabled={loading}>
-           
-            
-           {loading ? "Loading..." : "Sign In"}
+          >
+            Login
           </button>
         </div>
       </div>
       <div className="md:flex justify-center items-center md:w-[60%] hidden  ">
-        <img src={logo} className="w-[25%] h-[30%]" />
+        <img src={logo} className="w-[25%] h-[30%]" alt="logo" />
       </div>
     </div>
   );

@@ -9,10 +9,10 @@ import { GrLinkPrevious } from "react-icons/gr";
 const UserPage = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize] = useState(6); 
+  const [pageSize] = useState(8); 
   const [users, setUsers] = useState([]);
   const [isMoreUsersAvailable, setIsMoreUsersAvailable] = useState(true);
-  const [serialNumber, setSerialNumber] = useState(1);
+  
   
   // const user=[{
   //   id:1 ,
@@ -56,13 +56,9 @@ const UserPage = () => {
       // Update the users state with the new data
       if(res.data.length > 0 )
       {
-        const updatedUsers = res.data.map((user, index) => ({
-          ...user,
-          id: serialNumber + index
-        }));
-        setUsers(updatedUsers);
+        
+      setUsers(res.data);
       setIsMoreUsersAvailable(true);
-      setSerialNumber(serialNumber + pageSize);
       console.log(res.data, "usertable"); // Access the response data using res.data
       }
       else{
@@ -99,8 +95,10 @@ const UserPage = () => {
 
   const handlePreviousPage = () => {
     if (currentPage > 1) {
+      
       fetchUsers(currentPage - 1);
       setCurrentPage(currentPage - 1);
+
     }
   };
     
@@ -150,21 +148,21 @@ const UserPage = () => {
                           scope="row"
                           class="lg:px-2 md:px-4 px-2 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                         >
-                          {item.id}
+                          {item?.id}
                         </th>
                         <td class="lg:px-2 md:px-4 px-2 py-2  whitespace-nowrap ">
                           <img className='rounded-full h-10' src ={item?.image}
                   />
           
                         </td>
-                        <td class="lg:px-2 md:px-4 px-2 py-2 ">
+                        <td class="lg:px-2 md:px-4 px-2 py-2 text-sm ">
                           {item.firstName}
                         </td>
-                        <td class="lg:px-2 md:px-4 px-2 ">
+                        <td class="lg:px-2 md:px-4 px-2 text-sm ">
                           {item.lastName}
                         </td>
-                        <td class="lg:px-2 md:px-4 px-2 ">{item.email}</td>
-                        <td class={`lg:px-2 md:px-4 px-2  ${item.status==true? "text-green-500" : "text-sidebarheadinghoveringcolor"}`}>
+                        <td class="lg:px-2 md:px-4 px-2 text-sm">{item.email}</td>
+                        <td class={`lg:px-2 md:px-4 px-2  text-sm ${item.status==true? "text-green-500" : "text-sidebarheadinghoveringcolor"}`}>
                          {item?.status == true ? "Active" : "Not Active"}
                         </td>
                         <td class="lg:px-2 md:px-2 px-4 ">
@@ -177,7 +175,7 @@ const UserPage = () => {
                     ))}
                     
                     <tr colSpan={7} className=''>
-                      <td colSpan={7} className='flex flex-row gap-2'>{currentPage > 1 && <GrLinkPrevious  className='mt-1' onClick={handlePreviousPage}/> }{isMoreUsersAvailable ? <button className='text-center w-full' onClick={handleReadMore}>Read More</button> : <p className='text-center'>No More Users</p>}</td>
+                      <td colSpan={7} className='flex flex-row gap-2'>{currentPage > 1 && <GrLinkPrevious  className='mt-1 text-orange-500' onClick={handlePreviousPage}/> }{isMoreUsersAvailable ? <button className='text-center text-orange-500 w-full' onClick={handleReadMore}>Read More</button> : <p className='text-center text-orange-500'>No More Users</p>}</td>
                     </tr>
 
                   </tbody>
