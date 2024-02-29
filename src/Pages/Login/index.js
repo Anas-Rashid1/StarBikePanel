@@ -15,12 +15,7 @@ const AdminLogin = () => {
 
  
 
-  const handleNavigate = (admin) => {
-    console.log(admin , "fifa");
-    localStorage.setItem("token" , admin.token);
-    localStorage.setItem("username" , admin.user.name);
-    navigate("/");
-  }
+ 
    
   
   const handleLogin = async () => {
@@ -32,7 +27,10 @@ const AdminLogin = () => {
       );
 
       if (res.status === 200) {
-        handleNavigate(res.data);
+        navigate("/");
+        localStorage.setItem("token" , res.data.token);
+        localStorage.setItem("username" , res.data.user.name);
+      
       } else {
         console.log("Login failed");
       }

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useRef} from "react";
 // import { Col, Image, MenuItemProps } from "antd";
 import img1 from "../../Assets/boxImages/Shape.png";
+import { motion } from "framer-motion";
 
 import SideBar from "../../Components/SideBar";
 
@@ -19,6 +20,8 @@ import AdminLogin from "../Login";
 import StartMqtt from "../../Components/Mqtt";
 
 const AdminHome = () => {
+
+
   const [activeScooter, setActiveScooter] = useState();
   const dipatch = useDispatch();
   const ScooterData = useSelector((state) => state.Scooters.Scooters);
@@ -28,7 +31,8 @@ const AdminHome = () => {
 
   return (
     <>
-      <div className=" h-screen overflow-x-hidden bg-gray-100 relative">
+      <motion.div initial={{scaleY:0}} animate={{scaleY:1}} exit={{scaleY:0}}  className=" h-screen overflow-x-hidden bg-gray-100 relative  ">
+        
         <Search />
         <button></button>
 
@@ -54,7 +58,7 @@ const AdminHome = () => {
             <RecentJobs />
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

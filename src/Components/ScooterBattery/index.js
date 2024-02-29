@@ -12,7 +12,7 @@ const ScooterBattery = ({ batteryPercentage }) => {
     );
   }, [batteryPercentage]);
 
-  console.log(filledBars, "checking...");
+  console.log(filledBars, "filled");
 
   return (
     <div className=" flex flex-row gap-[3px] ">

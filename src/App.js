@@ -14,6 +14,7 @@ import AdminLogin from "./Pages/Login";
 import Layout from "./Components/Layout";
 import StartMqtt from "./Components/Mqtt";
 import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
   const [activeScooter, setActiveScooter] = useState();
@@ -21,7 +22,10 @@ function App() {
   StartMqtt();
 
   return (
+    <AnimatePresence >
     <BrowserRouter>
+   
+  
       {tok ? (<Layout>
         <Routes>
           
@@ -47,8 +51,12 @@ function App() {
       :
      ( <Routes>
       <Route index path="/" element={<AdminLogin />} /> 
+      
       </Routes>)}
+    
+
     </BrowserRouter>
+    </AnimatePresence>
   );
 }
 
