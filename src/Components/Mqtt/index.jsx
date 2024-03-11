@@ -79,7 +79,7 @@ const StartMqtt = () => {
       let { la, lo, ss, ib, sb, cy, sl, pw, rf, sf, io, ws, td } = JSON.parse(
         message.payloadString
       );
-      console.log("sss", imei, mt, la, lo, ss, sb);
+      console.log("ssss", imei, mt, la, lo, ss, sb);
 
       dispatch(
         updateOrAddScooter({
