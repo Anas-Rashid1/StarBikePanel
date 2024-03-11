@@ -23,15 +23,15 @@ function App() {
   const tok = localStorage.getItem("token");
   StartMqtt();
 
-  setTimeout(() => {
-    setLoading(false);
-  }, 2000);
+  // setTimeout(() => {
+  //   setLoading(false);
+  // }, 2000);
 
   return (
     <AnimatePresence >
     <BrowserRouter>
-   {isLoading? <Loader/> : (
-     tok ? (<Layout>
+ 
+    { tok ? (<Layout>
       <Routes>
         
          <Route path="/" element={<AdminHome/>}/> 
@@ -57,8 +57,11 @@ function App() {
    ( <Routes>
     <Route index path="/" element={<AdminLogin />} /> 
     
-    </Routes>)
-   )}
+    </Routes>
+    )
+   }
+   
+   
   
      
     

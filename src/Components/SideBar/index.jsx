@@ -74,14 +74,15 @@ const SideBar = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 500);
   const [loggingOut , setLoggingOut] = useState(false);
 
-  const logout = () => {
-    setLoggingOut(true); 
-
-      localStorage.removeItem("token");
-      localStorage.removeItem("username");
-      console.log("Hello World");
-      setLoggingOut(false); 
-   
+  const handleLogout = () => {
+    setLoggingOut(true);
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
+    console.log("Logging out...");
+    setTimeout(() => {
+      navigate("/");
+      setLoggingOut(false);
+    }, 2000); 
   };
 
   const reloadOnResize = () => {
@@ -122,6 +123,7 @@ const SideBar = () => {
 
 
   return (
+    loggingOut? <Loader/> :
     <div className={`${open ? "w-56" : "w-20"} ${open ? "pl-4" : "pl-2"}   bg-white h-auto duration-300 sticky overflow-y-auto `}>
         
     
@@ -194,7 +196,7 @@ const SideBar = () => {
               className=" text-sidebarheadingcolor pt-1  hover:text-sidebarheadinghoveringcolor cursor-pointer"
               onClick={() => {
                 setSelectedItem(item?.id);
-                logout();
+                handleLogout();
               }}
             >
               <div class="box h-4 w-8">
