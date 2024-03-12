@@ -1,0 +1,13 @@
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/starbycc/public_html # Change 'your_username' to your cPanel username
+    - /bin/mkdir -p $DEPLOYPATH
+    - /bin/cp -R $HOME/repo-dir/* $DEPLOYPATH
+    - /bin/find $DEPLOYPATH -type f -exec chmod 644 {} \;
+    - /bin/find $DEPLOYPATH -type d -exec chmod 755 {} \;
+    - /usr/local/bin/npm install --prefix $DEPLOYPATH
+    - /usr/local/bin/npm run build --prefix $DEPLOYPATH
+    - /bin/rm -rf $DEPLOYPATH/node_modules
+    - /bin/rm -f $DEPLOYPATH/package-lock.json
+    - /bin/rm -f $DEPLOYPATH/.gitignore
+    - /bin/cp $HOME/repo-dir/.env $DEPLOYPATH/.env # Copy .env file
