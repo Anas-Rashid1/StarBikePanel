@@ -2,7 +2,7 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/starbycc/public_html # Change 'your_username' to your cPanel username
     - /bin/mkdir -p $DEPLOYPATH
-    - /bin/cp -R $HOME/repo-dir/* $DEPLOYPATH
+    - /bin/cp -R $HOME/starbycc/repositories/StarBikePanel $DEPLOYPATH
     - /bin/find $DEPLOYPATH -type f -exec chmod 644 {} \;
     - /bin/find $DEPLOYPATH -type d -exec chmod 755 {} \;
     - /usr/local/bin/npm install --prefix $DEPLOYPATH
