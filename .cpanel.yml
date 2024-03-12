@@ -6,8 +6,8 @@ deployment:
     - /bin/cp -R /home/starbycc/repositories/StarBikePanel/* $DEPLOYPATH
     - /bin/find $DEPLOYPATH -type f -exec chmod 644 {} \;
     - /bin/find $DEPLOYPATH -type d -exec chmod 755 {} \;
-    - /usr/local/bin/npm install --prefix $DEPLOYPATH
-    - /usr/local/bin/npm run build --prefix $DEPLOYPATH
+    - npm install --prefix $DEPLOYPATH
+    - npm run build --prefix $DEPLOYPATH
     - /bin/rm -rf $DEPLOYPATH/node_modules
     - /bin/rm -f $DEPLOYPATH/package-lock.json
     - /bin/rm -f $DEPLOYPATH/.gitignore
