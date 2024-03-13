@@ -26,10 +26,24 @@ const StartMqtt = () => {
   // Create an instance of the MQTT client
   const client = new Client(
     "broker.hivemq.com",
-    8000,
+    8884, // Port for HTTPS
     "/mqtt",
     "24345456567767675654"
+    // {
+    //   protocol: "wss", // Use wss instead of ws
+    //   useSSL: true, // Enable SSL/TLS
+    // }
   );
+
+  // const client = new Client({
+  //   uri: "wss://your.hivemq.server:8884/mqtt", // Specify the WebSocket Secure (WSS) URL
+  //   clientId: "clientId", // Specify your client ID
+  //   useSSL: true, // Enable SSL/TLS
+  //   // Specify SSL/TLS options
+  //   ssl: {
+  //     rejectUnauthorized: true, // Reject unauthorized connections
+  //   },
+  // });
 
   // Set up event listeners
   // client.onConnectionLost = (responseObject) => {
@@ -47,6 +61,8 @@ const StartMqtt = () => {
   // }, 5000);
 
   client.connect({
+    useSSL: true,
+    cleanSession: true,
     onSuccess: () => {
       console.log("Connected to MQTT broker");
 
