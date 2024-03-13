@@ -6,6 +6,7 @@ import axios from "axios";
 import Loader from "../../Components/Loader/loader";
 
 const AdminLogin = () => {
+  const baseUrl = "185.199.53.223:4000";
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
@@ -14,10 +15,10 @@ const AdminLogin = () => {
   const handleLogin = async () => {
     setLoading(true);
     try {
-      const res = await axios.post(
-        "https://star-bike-backend.vercel.app/admin/adminlogin",
-        { email: email, password: pass }
-      );
+      const res = await axios.post(`http://${baseUrl}/admin/adminlogin`, {
+        email: email,
+        password: pass,
+      });
 
       if (res.status === 200) {
         navigate("/");
