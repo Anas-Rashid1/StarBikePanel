@@ -14,7 +14,7 @@ import Signalstrength from "../../Components/SignalStrength";
 
 const ScooterPage = ({ setActiveScooter }) => {
   const ScootersData = useSelector((state) => state.Scooters.Scooters);
-  console.log(ScootersData , "aaa");
+  console.log(ScootersData, "aaa");
 
   async function AddressFromLatLong(lat, long) {
     try {
@@ -69,7 +69,12 @@ const ScooterPage = ({ setActiveScooter }) => {
   //   },
   // ];
   return (
-    <motion.div initial={{scaleY:0}} animate={{scaleY:1}} exit={{scaleY:0}} className="relative h-screen overflow-x-hidden w-full bg-gray-100 px-2 md:px-6">
+    <motion.div
+      initial={{ scaleY: 0 }}
+      animate={{ scaleY: 1 }}
+      exit={{ scaleY: 0 }}
+      className="relative h-screen overflow-x-hidden w-full bg-gray-100 px-2 md:px-6"
+    >
       <Search />
 
       <div className=" bg-white px-2 pt-4 justify-center items-center mt-10 w-full  h-auto">
@@ -108,7 +113,7 @@ const ScooterPage = ({ setActiveScooter }) => {
                   </th>
                   <td class="lg:px-6 md:px-4 px-4 py-4">
                     {console.log("rajja")}
-                   
+
                     <ScooterBattery
                       batteryPercentage={
                         parseInt(item?.scooterbattery)
@@ -125,11 +130,9 @@ const ScooterPage = ({ setActiveScooter }) => {
                   </td>
                   <td class="lg:px-6 md:px-4 px-4 py-4">
                     <a href="">
-                      <ScooterBattery batteryPercentage={
-                       parseInt(item?.iotbattery)
-                        
-                      }/>
-                  
+                      <ScooterBattery
+                        batteryPercentage={parseInt(item?.iotbattery)}
+                      />
                     </a>
                   </td>
                   <td class="lg:px-6 md:px-4 px-4 py-4 flex flex-row gap-2">
@@ -139,7 +142,9 @@ const ScooterPage = ({ setActiveScooter }) => {
                       : item?.signalstrength}
                   </td>
                   <td
-                    class={`lg:px-6 md:px-4 px-4 py-4 ${
+                    class={`lg:px-6 md:px-4 p
+                    
+                    x-4 py-4 ${
                       item.status == "active"
                         ? "text-green-500"
                         : "text-sidebarheadinghoveringcolor"

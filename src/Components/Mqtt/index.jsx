@@ -25,10 +25,10 @@ const StartMqtt = () => {
 
   // Create an instance of the MQTT client
   const client = new Client(
-    "broker.hivemq.com",
-    8884, // Port for HTTPS
-    "/mqtt",
-    "24345456567767675654"
+    "broker.emqx.io",
+    8084, // Port for HTTPS
+    "/mqtt"
+
     // {
     //   protocol: "wss", // Use wss instead of ws
     //   useSSL: true, // Enable SSL/TLS
@@ -95,7 +95,7 @@ const StartMqtt = () => {
       let { la, lo, ss, ib, sb, cy, sl, pw, rf, sf, io, ws, td } = JSON.parse(
         message.payloadString
       );
-      console.log("ssss", imei, mt, la, lo, ss, sb);
+      console.log("ssss", imei, mt, la, lo, ss, sb, rf);
 
       dispatch(
         updateOrAddScooter({

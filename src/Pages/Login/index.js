@@ -6,7 +6,7 @@ import axios from "axios";
 import Loader from "../../Components/Loader/loader";
 
 const AdminLogin = () => {
-  const baseUrl = "185.199.53.223:4000";
+  const baseUrl = "https://star.macworldproperties.com";
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
@@ -15,7 +15,7 @@ const AdminLogin = () => {
   const handleLogin = async () => {
     setLoading(true);
     try {
-      const res = await axios.post(`http://${baseUrl}/admin/adminlogin`, {
+      const res = await axios.post(`${baseUrl}/admin/adminlogin`, {
         email: email,
         password: pass,
       });
@@ -24,6 +24,7 @@ const AdminLogin = () => {
         navigate("/");
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("username", res.data.user.name);
+        window.location.reload();
       } else {
         console.log("Login failed");
       }
