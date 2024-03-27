@@ -1,27 +1,57 @@
-import React from "react";
+import React, { useLayoutEffect, useState } from "react";
 import img1 from "../../Assets/boxImages/Shape.png";
 import img2 from "../../Assets/boxImages/Icon.png";
 import img3 from "../../Assets/boxImages/Icon2.png";
 import img4 from "../../Assets/boxImages/Icon3.png";
-
-const data = [
-  { heading: "Usage", count: "14", imageSrc: img1, text: "54,232" },
-  {
-    heading: "Customer Rides",
-    count: "16",
-    imageSrc: img2,
-    text: "Total jobs",
-  },
-  { heading: "Reviews", count: "57", imageSrc: img3, text: "Progress" },
-  {
-    heading: "Customer Transactions",
-    count: "32",
-    imageSrc: img4,
-    text: "54,232",
-  },
-];
+import CountUp from "react-countup";
+import Euro from "../../Assets/boxImages/euro.png";
+import axios from "axios";
 
 const PanelBox = () => {
+  const [info, setInfo] = useState();
+
+  useLayoutEffect(() => {
+    async function fetchInfo() {
+      try {
+        const realData = await axios.get(
+          "https://star.macworldproperties.com/admin/info"
+        );
+        setInfo(realData.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+
+    fetchInfo();
+
+    setInterval(() => {
+      fetchInfo();
+    }, 20000);
+
+    // Execute the fetchInfo function
+  }, []);
+
+  const data = [
+    { heading: "Usage", count: "14", imageSrc: img1, text: "54,232" },
+    {
+      heading: "Customer Rides",
+      count: info?.totalRides[0].totalRides,
+      imageSrc: img2,
+      text: "Total jobs",
+    },
+    {
+      heading: "Reviews",
+      count: info?.totalFeedBack,
+      imageSrc: img3,
+      text: "Progress",
+    },
+    {
+      heading: "Transactions",
+      count: info?.totalTransactions[0].totalAmount,
+      imageSrc: Euro,
+      text: "Total Euros",
+    },
+  ];
   return (
     <div className="flex min-[200px]:flex-col md:flex-row mx-5 xl:mx-0  items-center  ">
       {data.map((item, index) => (
@@ -35,7 +65,10 @@ const PanelBox = () => {
           </div>
           <div className="flex justify-between items-center mb-1">
             <div className="xl:text-2xl lg:text-xl">
-              <b> {item.count}</b>
+              <b>
+                {" "}
+                <CountUp end={item.count} duration={5} />
+              </b>
             </div>
             <img
               src={item.imageSrc}
