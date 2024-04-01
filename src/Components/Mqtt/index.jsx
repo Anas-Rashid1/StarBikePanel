@@ -10,7 +10,6 @@ const Imei = [
   "862427062323607",
   "862427062327145", //YES
   "862427062322211", //YES
-
   "862427062327285", //YES
   "862427062327046", //YES
   "862427065357917", //YES
@@ -27,7 +26,7 @@ const StartMqtt = () => {
   const client = new Client(
     "broker.emqx.io",
     8084, // Port for HTTPS
-    "/mqtt"
+    "starbike522245555778995545662331555"
 
     // {
     //   protocol: "wss", // Use wss instead of ws

@@ -24,9 +24,9 @@ const PanelBox = () => {
 
     fetchInfo();
 
-    setInterval(() => {
-      fetchInfo();
-    }, 20000);
+    // setInterval(() => {
+    //   fetchInfo();
+    // }, 20000);
 
     // Execute the fetchInfo function
   }, []);

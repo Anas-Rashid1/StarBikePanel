@@ -25,7 +25,7 @@ const MapComponent = ({ setActiveScooter }) => {
       ) : (
         <GoogleMap
           mapContainerStyle={{
-            width: "50vw",
+            width: "66vw",
             height: "350px",
           }}
           center={center}
