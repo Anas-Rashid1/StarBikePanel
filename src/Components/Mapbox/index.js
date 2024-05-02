@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import { animated, useSpring } from "react-spring";
 
 // Fix for
-const MapComponent = ({ setActiveScooter }) => {
+const MapComponent = ({ setActiveScooter, activeScooter }) => {
   const ScooterData = useSelector((state) => state.Scooters.Scooters);
   // const ScooterData = useSelector((state) => state.Scooters.Scooters);
 
@@ -41,6 +41,11 @@ const MapComponent = ({ setActiveScooter }) => {
                   key={scooter.imei}
                   position={{ lat: scooter?.latitude, lng: scooter?.longitude }}
                   onClick={() => setActiveScooter(scooter.imei)}
+                  animation={
+                    scooter.imei === activeScooter
+                      ? window.google.maps.Animation.BOUNCE
+                      : null
+                  }
                 />
               </div>
             );

@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Col, Image } from "antd";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -25,9 +25,6 @@ import colorIcon_settings from "../../Assets/SideBarColorfulIcons/Settings.png";
 
 import Loader from "../Loader/loader";
 
-
-
-
 import { BsArrowLeftShort } from "react-icons/bs";
 const General = [
   {
@@ -35,36 +32,46 @@ const General = [
     Name: "Dashboard",
     GreyIcon: greyIcon_dashboard,
     ColorIcon: colorIcon_dashboard,
-    path:"/",
+    path: "/",
   },
   {
     id: 2,
     Name: "Scooter",
     GreyIcon: greyIcon_scooter,
     ColorIcon: colorIcon_scooter,
-    path:"/scooter",
+    path: "/scooter",
   },
-  { id: 3, Name: "User", GreyIcon: greyIcon_users, ColorIcon: colorIcon_users , path:"/user" },
- 
+  {
+    id: 3,
+    Name: "User",
+    GreyIcon: greyIcon_users,
+    ColorIcon: colorIcon_users,
+    path: "/user",
+  },
+
   {
     id: 4,
     Name: "Reports",
     GreyIcon: greyIcon_reports,
     ColorIcon: colorIcon_reports,
-    path:"/report",
+    path: "/report",
   },
   {
     id: 5,
-    Name: "History",
+    Name: "FeedBack",
     GreyIcon: greyIcon_history,
     ColorIcon: colorIcon_history,
+    path: "/feedback",
   },
-  
 ];
 
 const Account = [
-  { id: 6, Name: "Log out", GreyIcon: greyIcon_help, ColorIcon: colorIcon_help },
-
+  {
+    id: 6,
+    Name: "Log out",
+    GreyIcon: greyIcon_help,
+    ColorIcon: colorIcon_help,
+  },
 ];
 
 const SideBar = () => {
@@ -72,7 +79,7 @@ const SideBar = () => {
   const [selectedItem, setSelectedItem] = useState();
   const [open, setOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 500);
-  const [loggingOut , setLoggingOut] = useState(false);
+  const [loggingOut, setLoggingOut] = useState(false);
 
   const handleLogout = () => {
     setLoggingOut(true);
@@ -82,7 +89,7 @@ const SideBar = () => {
     setTimeout(() => {
       navigate("/");
       setLoggingOut(false);
-    }, 2000); 
+    }, 2000);
   };
 
   const reloadOnResize = () => {
@@ -98,93 +105,115 @@ const SideBar = () => {
   }, []);
 
   useEffect(() => {
-
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 500);
     };
 
-   
     window.addEventListener("resize", handleResize);
 
-   
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, [selectedItem]);
 
-
-
   const handleArrowButtonClick = () => {
-  
     if (!isMobile) {
       setOpen(!open);
     }
   };
 
-
-  return (
-    loggingOut? <Loader/> :
-    <div className={`${open ? "w-56" : "w-20"} ${open ? "pl-4" : "pl-2"}   bg-white h-auto duration-300 sticky overflow-y-auto `}>
-        
-    
-     {console.log(selectedItem , "abc")}
+  return loggingOut ? (
+    <Loader />
+  ) : (
+    <div
+      className={`${open ? "w-56" : "w-20"} ${
+        open ? "pl-4" : "pl-2"
+      }   bg-white h-auto duration-300 sticky overflow-y-auto `}
+    >
+      {console.log(selectedItem, "abc")}
       <div className="bg-white flex flex-col justify-center items-center gap-4">
-
         <Image src={logo} width={55} preview={false} />
-        <BsArrowLeftShort className={`bg-ordinary text-sidebarheadinghoveringcolor text-3xl rounded-full   z-50 top-9 border border-sidebarheadinghoveringcolor cursor-pointer ${!open && "rotate-180"}  ${isMobile && "hidden" }` } onClick={handleArrowButtonClick}/>
+        <BsArrowLeftShort
+          className={`bg-ordinary text-sidebarheadinghoveringcolor text-3xl rounded-full   z-50 top-9 border border-sidebarheadinghoveringcolor cursor-pointer ${
+            !open && "rotate-180"
+          }  ${isMobile && "hidden"}`}
+          onClick={handleArrowButtonClick}
+        />
       </div>
-    
 
-      <p className={`text-sidebarheadingcolor font-medium text-2xl pl-4 mb-[1px] ${!open && "scale-0"}`}>
+      <p
+        className={`text-sidebarheadingcolor font-medium text-2xl pl-4 mb-[1px] ${
+          !open && "scale-0"
+        }`}
+      >
         General{" "}
       </p>
       {General.map((item) => {
         return (
-          
           <div>
             <div
               id={item?.id}
-              className=" text-sidebarheadingcolor pt-2   hover:text-sidebarheadinghoveringcolor cursor-pointer" 
+              className=" text-sidebarheadingcolor pt-2   hover:text-sidebarheadinghoveringcolor cursor-pointer"
               onClick={() => {
-               navigate(item?.path)
+                navigate(item?.path);
 
-               setSelectedItem(item?.id);
-               console.log(item?.id , "item id..")
-            
+                setSelectedItem(item?.id);
+                console.log(item?.id, "item id..");
               }}
             >
               <div class="box h-4 w-8">
-                {((selectedItem == undefined && item?.id === 1) || item?.id === selectedItem) && (
+                {((selectedItem == undefined && item?.id === 1) ||
+                  item?.id === selectedItem) && (
                   <div className="rectangle bg-sidebarheadinghoveringcolor rounded-r-full h-12 w-2 translate-y-1"></div>
                 )}
               </div>
 
-              {((selectedItem == undefined && item?.id === 1) || item?.id === selectedItem) ? (
-              
+              {(selectedItem == undefined && item?.id === 1) ||
+              item?.id === selectedItem ? (
                 <div className=" flex flex-row mb-2 ml-6">
-                  {   console.log(selectedItem , "selecteditem...")}
-                  
-                  <Image src={item?.ColorIcon} width={20} preview={false} className="" />
-                  <p className={` ml-4  text-sidebarheadinghoveringcolor  ${!open && "hidden"}`} >
+                  {console.log(selectedItem, "selecteditem...")}
+
+                  <Image
+                    src={item?.ColorIcon}
+                    width={20}
+                    preview={false}
+                    className=""
+                  />
+                  <p
+                    className={` ml-4  text-sidebarheadinghoveringcolor  ${
+                      !open && "hidden"
+                    }`}
+                  >
                     {item.Name}
                   </p>
-                
                 </div>
               ) : (
                 <div className=" flex flex-row mb-2  ml-6 ">
-                  <Image src={item?.GreyIcon} width={20} preview={false} className=" "  />
-                  <p className={ `ml-4  text-sidebarheadingcolor ${!open && "hidden"}`  }>
+                  <Image
+                    src={item?.GreyIcon}
+                    width={20}
+                    preview={false}
+                    className=" "
+                  />
+                  <p
+                    className={`ml-4  text-sidebarheadingcolor ${
+                      !open && "hidden"
+                    }`}
+                  >
                     {item.Name}
                   </p>
                 </div>
               )}
             </div>
           </div>
-          
         );
       })}
 
-      <p className={`text-sidebarheadingcolor font-medium text-2xl pl-4 ${!open && "scale-0"}`}>
+      <p
+        className={`text-sidebarheadingcolor font-medium text-2xl pl-4 ${
+          !open && "scale-0"
+        }`}
+      >
         Accounts{" "}
       </p>
 
@@ -200,22 +229,42 @@ const SideBar = () => {
               }}
             >
               <div class="box h-4 w-8">
-                {((selectedItem == undefined && item?.id === 1) || item?.id === selectedItem) && (
+                {((selectedItem == undefined && item?.id === 1) ||
+                  item?.id === selectedItem) && (
                   <div className="rectangle bg-sidebarheadinghoveringcolor rounded-r-full h-12 w-2 translate-y-1"></div>
                 )}
               </div>
 
-              {((selectedItem == undefined && item?.id === 1) || item?.id === selectedItem) ? (
+              {(selectedItem == undefined && item?.id === 1) ||
+              item?.id === selectedItem ? (
                 <div className=" flex  ml-6">
-                  <Image src={item?.ColorIcon} width={20} preview={false} className="" />
-                  <p className={ `ml-4   text-sidebarheadinghoveringcolor  ${!open && "hidden"}`  }>
-                  {loggingOut? "logging out..." :  item.Name}
+                  <Image
+                    src={item?.ColorIcon}
+                    width={20}
+                    preview={false}
+                    className=""
+                  />
+                  <p
+                    className={`ml-4   text-sidebarheadinghoveringcolor  ${
+                      !open && "hidden"
+                    }`}
+                  >
+                    {loggingOut ? "logging out..." : item.Name}
                   </p>
                 </div>
               ) : (
                 <div className=" flex flex-row  ml-6 ">
-                  <Image src={item?.GreyIcon} width={20} preview={false} className="" />
-                  <p className={` ml-4   text-sidebarheadingcolor ${!open && "hidden"}` }>
+                  <Image
+                    src={item?.GreyIcon}
+                    width={20}
+                    preview={false}
+                    className=""
+                  />
+                  <p
+                    className={` ml-4   text-sidebarheadingcolor ${
+                      !open && "hidden"
+                    }`}
+                  >
                     {item.Name}
                   </p>
                 </div>

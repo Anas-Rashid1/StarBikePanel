@@ -14,60 +14,7 @@ import Signalstrength from "../../Components/SignalStrength";
 
 const ScooterPage = ({ setActiveScooter }) => {
   const ScootersData = useSelector((state) => state.Scooters.Scooters);
-  console.log(ScootersData, "aaa");
 
-  async function AddressFromLatLong(lat, long) {
-    try {
-      const response = await geocode("latlng", `${lat},${long}`, {
-        key: process.env.REACT_APP_GOOGLE_API_KEY,
-        language: "en",
-        region: "gr",
-      });
-      const address = response.results[0]?.formatted_address;
-      return address;
-    } catch (error) {
-      console.error(error);
-      return null; // Return null or handle error appropriately
-    }
-  }
-
-  // const ScooterData = [
-  //   {
-  //     serial: "#1423984567",
-  //     battery: 30,
-  //     location: "loremipsum",
-  //     review: 4.5,
-  //     status: "start",
-  //   },
-  //   {
-  //     serial: "#1423984567",
-  //     battery: 80,
-  //     location: "loremipsum",
-  //     review: 4.5,
-  //     status: "start",
-  //   },
-  //   {
-  //     serial: "#1423984567",
-  //     battery: 50,
-  //     location: "loremipsum",
-  //     review: 4.5,
-  //     status: "start",
-  //   },
-  //   {
-  //     serial: "#1423984567",
-  //     battery: 100,
-  //     location: "loremipsum",
-  //     review: 4.5,
-  //     status: "start",
-  //   },
-  //   {
-  //     serial: "#1423984567",
-  //     battery: 15,
-  //     location: "loremipsum",
-  //     review: 4.5,
-  //     status: "start",
-  //   },
-  // ];
   return (
     <motion.div
       initial={{ scaleY: 0 }}
@@ -88,9 +35,7 @@ const ScooterPage = ({ setActiveScooter }) => {
                 <th scope="col" class="lg:px-6 md:px-4 px-4 py-3">
                   BATTERY
                 </th>
-                <th scope="col" class="lg:px-6 md:px-4 px-4 py-3">
-                  LOCATION
-                </th>
+
                 <th scope="col" class="lg:px-6 md:px-4 px-4 py-3">
                   IoT BATTERY
                 </th>
@@ -123,11 +68,7 @@ const ScooterPage = ({ setActiveScooter }) => {
                       }
                     />
                   </td>
-                  <td class="lg:px-6 md:px-4 px-4 py-4">
-                    <a href="">
-                      {/* {AddressFromLatLong(item?.latitude, item?.longitude)} */}
-                    </a>
-                  </td>
+
                   <td class="lg:px-6 md:px-4 px-4 py-4">
                     <a href="">
                       <ScooterBattery
